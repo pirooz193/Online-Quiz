@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:online_exam_test/admin_panel_create_course.dart';
 import 'package:online_exam_test/admin_panel_add_student.dart';
 import 'package:online_exam_test/main.dart';
 
-class AdminPanelCoursesStudents extends StatelessWidget {
+class WaitingList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
@@ -20,41 +19,8 @@ class AdminPanelCoursesStudents extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-          title: const Text('Courses / Students'),
+          title: const Text('Waiting List'),
           elevation: 0,
-          actions: [
-            TextButton(
-              // padding: EdgeInsets.only(right: 40),
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => AddNewStudentToCourseScreen(),
-                  ),
-                );
-              },
-              child: Padding(
-                padding: EdgeInsets.only(right: 34),
-                child: Row(
-                  children: [
-                    Icon(
-                      CupertinoIcons.add,
-                      size: 24,
-                      color: Colors.black,
-                    ),
-                    SizedBox(
-                      width: 6,
-                    ),
-                    Text(
-                      'New Student',
-                      style: themeData.textTheme.bodyText2!.copyWith(
-                        fontSize: 16,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
         ),
         body: SafeArea(
           child: Padding(
@@ -150,17 +116,17 @@ class AdminPanelCoursesStudents extends StatelessWidget {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Expanded(
+                                    const Expanded(
                                       child: Padding(
                                         padding: EdgeInsets.only(right: 10),
                                         child: Text(
-                                          'Student  asdfasdfdfdsfsdfsdfsd ffffffffffddddddddddddddddddddddddddddddddddddfff',
+                                          'Student  asdfasdfdfdsfsdfsdfsd ',
                                           maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
                                         ),
                                       ),
                                     ),
-                                    Expanded(
+                                    const Expanded(
                                       child: Padding(
                                         padding: EdgeInsets.only(right: 10),
                                         child: Center(
@@ -172,7 +138,7 @@ class AdminPanelCoursesStudents extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    Expanded(
+                                    const Expanded(
                                       child: Padding(
                                         padding: EdgeInsets.only(right: 10),
                                         child: Center(
@@ -190,8 +156,8 @@ class AdminPanelCoursesStudents extends StatelessWidget {
                                           child: IconButton(
                                             onPressed: () {},
                                             icon: Icon(
-                                              Icons.delete,
-                                              color: Colors.red.shade400,
+                                              Icons.check,
+                                              color: Colors.green.shade400,
                                             ),
                                           )),
                                     ),

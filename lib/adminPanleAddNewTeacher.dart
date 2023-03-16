@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:online_exam_test/main.dart';
 
-class CreateCourseScreen extends StatelessWidget {
+class AdminPanelAddNewTeacherScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
@@ -18,9 +17,7 @@ class CreateCourseScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-          title: const Text(
-            'Create New Course',
-          ),
+          title: const Text('Add New Teacher'),
           elevation: 0,
         ),
         body: SafeArea(
@@ -47,7 +44,7 @@ class CreateCourseScreen extends StatelessWidget {
                       child: Column(children: [
                         Center(
                           child: Text(
-                            'New Course',
+                            'New Teacher',
                             style: themeData.textTheme.headline6,
                           ),
                         ),
@@ -60,23 +57,25 @@ class CreateCourseScreen extends StatelessWidget {
                         ),
                         const TextField(
                           decoration: InputDecoration(
-                            label: Text('Title'),
+                            label: Text('Full-name'),
                           ),
                         ),
                         SizedBox(
                           height: 32,
                         ),
                         const TextField(
+                          keyboardType: TextInputType.number,
                           decoration: InputDecoration(
-                            label: Text('Master Code'),
+                            label: Text('Teacher Code'),
                           ),
                         ),
                         SizedBox(
                           height: 32,
                         ),
                         const TextField(
+                          keyboardType: TextInputType.number,
                           decoration: InputDecoration(
-                            label: Text('Capacity'),
+                            label: Text('Mobile'),
                           ),
                         ),
                         SizedBox(
@@ -93,7 +92,7 @@ class CreateCourseScreen extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(8)),
                               child: Center(
                                 child: Text(
-                                  'Create Course',
+                                  'Add Teacher',
                                   style: themeData.textTheme.bodyText2!
                                       .copyWith(
                                           color:

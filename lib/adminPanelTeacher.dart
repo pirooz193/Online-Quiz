@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:online_exam_test/admin_panel_create_course.dart';
-import 'package:online_exam_test/admin_panel_add_student.dart';
+import 'package:online_exam_test/adminPanleAddNewTeacher.dart';
 import 'package:online_exam_test/main.dart';
 
-class AdminPanelCoursesStudents extends StatelessWidget {
+class AdminPanelTeachersScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
@@ -20,7 +19,7 @@ class AdminPanelCoursesStudents extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-          title: const Text('Courses / Students'),
+          title: const Text('Teachers'),
           elevation: 0,
           actions: [
             TextButton(
@@ -28,7 +27,7 @@ class AdminPanelCoursesStudents extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => AddNewStudentToCourseScreen(),
+                    builder: (context) => AdminPanelAddNewTeacherScreen(),
                   ),
                 );
               },
@@ -36,16 +35,16 @@ class AdminPanelCoursesStudents extends StatelessWidget {
                 padding: EdgeInsets.only(right: 34),
                 child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       CupertinoIcons.add,
                       size: 24,
                       color: Colors.black,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 6,
                     ),
                     Text(
-                      'New Student',
+                      'New Teacher',
                       style: themeData.textTheme.bodyText2!.copyWith(
                         fontSize: 16,
                       ),
@@ -150,34 +149,34 @@ class AdminPanelCoursesStudents extends StatelessWidget {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Expanded(
+                                    const Expanded(
                                       child: Padding(
                                         padding: EdgeInsets.only(right: 10),
                                         child: Text(
-                                          'Student  asdfasdfdfdsfsdfsdfsd ffffffffffddddddddddddddddddddddddddddddddddddfff',
+                                          'Teacher  ',
                                           maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
                                         ),
                                       ),
                                     ),
-                                    Expanded(
+                                    const Expanded(
                                       child: Padding(
                                         padding: EdgeInsets.only(right: 10),
                                         child: Center(
                                           child: Text(
-                                            'Student',
+                                            'Teacher',
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
                                           ),
                                         ),
                                       ),
                                     ),
-                                    Expanded(
+                                    const Expanded(
                                       child: Padding(
                                         padding: EdgeInsets.only(right: 10),
                                         child: Center(
                                           child: Text(
-                                            'Student',
+                                            '0912xxx1122',
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
                                           ),

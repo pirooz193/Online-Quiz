@@ -1,10 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:online_exam_test/admin_panel_create_course.dart';
-import 'package:online_exam_test/admin_panel_add_student.dart';
-import 'package:online_exam_test/main.dart';
 
-class AdminPanelCoursesStudents extends StatelessWidget {
+import 'admin_panel_add_student.dart';
+
+final backgroundFirstColor = Colors.grey.shade300;
+final backgroundSecondColor = Colors.grey.shade200;
+
+class AdminpanelAllStudentScreen extends StatelessWidget {
+  const AdminpanelAllStudentScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
@@ -20,7 +24,7 @@ class AdminPanelCoursesStudents extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-          title: const Text('Courses / Students'),
+          title: const Text('Students'),
           elevation: 0,
           actions: [
             TextButton(

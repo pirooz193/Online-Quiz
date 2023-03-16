@@ -40,7 +40,7 @@ class AdminPanelCourses extends StatelessWidget {
                     Icon(
                       CupertinoIcons.add,
                       size: 24,
-                      color: themeData.colorScheme.onPrimary,
+                      color: Colors.black,
                     ),
                     SizedBox(
                       width: 6,
@@ -48,7 +48,6 @@ class AdminPanelCourses extends StatelessWidget {
                     Text(
                       'New Course',
                       style: themeData.textTheme.bodyText2!.copyWith(
-                        color: themeData.colorScheme.onPrimary,
                         fontSize: 16,
                       ),
                     ),
@@ -58,204 +57,229 @@ class AdminPanelCourses extends StatelessWidget {
             ),
           ],
         ),
-        body: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 40, 20, 80),
-          child: Container(
-            height: 1000,
-            decoration: BoxDecoration(
-              color: themeData.colorScheme.surface,
-              borderRadius: BorderRadius.circular(24),
-              boxShadow: [
-                BoxShadow(
-                  blurRadius: 20,
-                  color: Colors.grey.shade300,
-                ),
-              ],
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child:
-                  Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Container(
-                      height: 40,
-                      width: 300,
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade300,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: const TextField(
-                        cursorHeight: 20,
-                        decoration: InputDecoration(
-                            contentPadding: EdgeInsets.all(20),
-                            floatingLabelBehavior: FloatingLabelBehavior.never,
-                            border: InputBorder.none,
-                            prefixIcon: Icon(CupertinoIcons.search),
-                            label: Text('Search ...')),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 24,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8, right: 8),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(20, 40, 20, 80),
+            child: Container(
+              height: 1000,
+              decoration: BoxDecoration(
+                color: themeData.colorScheme.surface,
+                borderRadius: BorderRadius.circular(24),
+                boxShadow: [
+                  BoxShadow(
+                    blurRadius: 20,
+                    color: Colors.grey.shade300,
+                  ),
+                ],
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          Expanded(
-                              child: Text(
-                            'Title',
-                            overflow: TextOverflow.ellipsis,
-                            style: themeData.textTheme.headline6!
-                                .copyWith(fontSize: 15),
-                          )),
-                          SizedBox(
-                            width: 16,
+                          Container(
+                            height: 40,
+                            width: 300,
+                            decoration: BoxDecoration(
+                              color: Colors.grey.shade300,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: const TextField(
+                              cursorHeight: 20,
+                              decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.all(20),
+                                  floatingLabelBehavior:
+                                      FloatingLabelBehavior.never,
+                                  border: InputBorder.none,
+                                  prefixIcon: Icon(CupertinoIcons.search),
+                                  label: Text('Search ...')),
+                            ),
                           ),
-                          Expanded(
-                              child: Text(
-                            'Master',
-                            overflow: TextOverflow.ellipsis,
-                            style: themeData.textTheme.headline6!
-                                .copyWith(fontSize: 15),
-                          )),
-                          Expanded(
-                              child: Text(
-                            'Capacity',
-                            overflow: TextOverflow.ellipsis,
-                            style: themeData.textTheme.headline6!
-                                .copyWith(fontSize: 15),
-                          )),
-                          Expanded(
-                              child: Center(
-                                  child: Text(
-                            'Questions',
-                            overflow: TextOverflow.ellipsis,
-                            style: themeData.textTheme.headline6!
-                                .copyWith(fontSize: 15),
-                          ))),
-                          Expanded(
-                              child: Center(
-                                  child: Text(
-                            'Students',
-                            overflow: TextOverflow.ellipsis,
-                            style: themeData.textTheme.headline6!
-                                .copyWith(fontSize: 15),
-                          ))),
+                          SizedBox(
+                            height: 24,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8, right: 8),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Expanded(
+                                    child: Text(
+                                  'Title',
+                                  overflow: TextOverflow.ellipsis,
+                                  style: themeData.textTheme.headline6!
+                                      .copyWith(fontSize: 13),
+                                )),
+                                SizedBox(
+                                  width: 16,
+                                ),
+                                Expanded(
+                                    child: Text(
+                                  'Master',
+                                  overflow: TextOverflow.ellipsis,
+                                  style: themeData.textTheme.headline6!
+                                      .copyWith(fontSize: 13),
+                                )),
+                                Expanded(
+                                    child: Text(
+                                  'Capacity',
+                                  overflow: TextOverflow.ellipsis,
+                                  style: themeData.textTheme.headline6!
+                                      .copyWith(fontSize: 13),
+                                )),
+                                SizedBox(
+                                  width: 4,
+                                ),
+                                Expanded(
+                                    child: Center(
+                                        child: Text(
+                                  'Questions',
+                                  overflow: TextOverflow.ellipsis,
+                                  style: themeData.textTheme.headline6!
+                                      .copyWith(fontSize: 13),
+                                ))),
+                                Expanded(
+                                    child: Center(
+                                        child: Text(
+                                  'Students',
+                                  overflow: TextOverflow.ellipsis,
+                                  style: themeData.textTheme.headline6!
+                                      .copyWith(fontSize: 13),
+                                ))),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                const Divider(),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: 15,
-                    itemBuilder: ((context, index) {
-                      return Container(
-                        margin: EdgeInsets.only(top: 8),
-                        height: 80,
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade100,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 8, right: 8),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsets.only(right: 10),
-                                  child: Text(
-                                    'Student  asdfasdfdfdsfsdfsdfsd ',
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      const Divider(),
+                      Expanded(
+                        child: ListView.builder(
+                          itemCount: 15,
+                          itemBuilder: ((context, index) {
+                            return Container(
+                              margin: EdgeInsets.only(top: 8),
+                              height: 80,
+                              decoration: BoxDecoration(
+                                color: Colors.grey.shade100,
+                                borderRadius: BorderRadius.circular(20),
                               ),
-                              SizedBox(
-                                width: 16,
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsets.only(right: 10),
-                                  child: Text(
-                                    'Master',
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsets.only(right: 10),
-                                  child: Text(
-                                    '20',
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsets.only(right: 10),
-                                  child: TextButton(
-                                      onPressed: () {
-                                        Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                CourseQuestionsScreen(),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 8, right: 8),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Expanded(
+                                      child: Padding(
+                                        padding: EdgeInsets.only(right: 10),
+                                        child: Text(
+                                          'Java /Spring ',
+                                          style: themeData.textTheme.subtitle1!
+                                              .copyWith(
+                                            color: Colors.black,
                                           ),
-                                        );
-                                      },
-                                      child: Text(
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        'Show',
-                                        style: themeData.textTheme.bodyText2!
-                                            .copyWith(
-                                          color: themeData.colorScheme.primary,
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
                                         ),
-                                      )),
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsets.only(right: 10),
-                                  child: TextButton(
-                                      onPressed: () {
-                                        Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                AdminPanelCoursesStudents(),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 16,
+                                    ),
+                                    Expanded(
+                                      child: Padding(
+                                        padding: EdgeInsets.only(right: 10),
+                                        child: Text(
+                                          'Master',
+                                          style: themeData.textTheme.subtitle1!
+                                              .copyWith(
+                                            color: Colors.black,
                                           ),
-                                        );
-                                      },
-                                      child: Text(
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        'Show',
-                                        style: themeData.textTheme.bodyText2!
-                                            .copyWith(
-                                          color: themeData.colorScheme.primary,
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
                                         ),
-                                      )),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Padding(
+                                        padding: EdgeInsets.only(right: 10),
+                                        child: Text(
+                                          '20',
+                                          style: themeData.textTheme.subtitle1!
+                                              .copyWith(
+                                            color: Colors.black,
+                                          ),
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Padding(
+                                        padding: EdgeInsets.only(right: 10),
+                                        child: TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      CourseQuestionsScreen(),
+                                                ),
+                                              );
+                                            },
+                                            child: Text(
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                              'Show',
+                                              style: themeData
+                                                  .textTheme.subtitle1!
+                                                  .copyWith(
+                                                color: themeData
+                                                    .colorScheme.primary,
+                                              ),
+                                            )),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Padding(
+                                        padding: EdgeInsets.only(right: 10),
+                                        child: TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      AdminPanelCoursesStudents(),
+                                                ),
+                                              );
+                                            },
+                                            child: Text(
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                              'Show',
+                                              style: themeData
+                                                  .textTheme.subtitle1!
+                                                  .copyWith(
+                                                color: themeData
+                                                    .colorScheme.primary,
+                                              ),
+                                            )),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                            ],
-                          ),
+                            );
+                          }),
                         ),
-                      );
-                    }),
-                  ),
-                ),
-              ]),
+                      ),
+                    ]),
+              ),
             ),
           ),
         ),
