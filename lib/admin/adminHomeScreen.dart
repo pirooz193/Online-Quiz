@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:online_exam_test/gen/assets.gen.dart';
 
@@ -19,32 +18,33 @@ class AdminHomeScreen extends StatelessWidget {
         elevation: 0,
         actions: [
           TextButton(
-              onPressed: () {},
-              child: Row(
-                children: [
-                  Text(
-                    'Logout',
-                    style: themeData.textTheme.subtitle2!
-                        .copyWith(color: Colors.grey.shade700),
-                  ),
-                  IconButton(
-                    onPressed: () {
-                      // Navigator.of(context).;
-                    },
-                    icon: Icon(Icons.logout, color: Colors.black),
-                  ),
-                ],
-              )),
+            onPressed: () {},
+            child: Row(
+              children: [
+                Text(
+                  'Logout',
+                  style: themeData.textTheme.subtitle2!
+                      .copyWith(color: Colors.grey.shade700),
+                ),
+                IconButton(
+                  onPressed: () {
+                    // Navigator.of(context).;
+                  },
+                  icon: const Icon(Icons.logout, color: Colors.black),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: Expanded(
             child: Container(
               decoration: const BoxDecoration(),
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(12, 0, 12, 100),
+                padding: const EdgeInsets.fromLTRB(12, 0, 12, 60),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -53,7 +53,7 @@ class AdminHomeScreen extends StatelessWidget {
                     ),
                     Center(
                       child: SingleChildScrollView(
-                        physics: BouncingScrollPhysics(),
+                        physics: const BouncingScrollPhysics(),
                         scrollDirection: Axis.horizontal,
                         child: Padding(
                           padding: const EdgeInsets.only(top: 8, bottom: 8),
@@ -96,7 +96,7 @@ class AdminHomeScreen extends StatelessWidget {
                     ),
                     Center(
                       child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 80, 0, 0),
+                        padding: const EdgeInsets.fromLTRB(16, 80, 16, 0),
                         child: Wrap(
                           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           direction: Axis.horizontal,
@@ -105,13 +105,13 @@ class AdminHomeScreen extends StatelessWidget {
                           children: [
                             Container(
                               padding: const EdgeInsets.all(24),
-                              width: 500,
-                              height: 250,
+                              width: 600,
+                              height: 400,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.all(
+                                borderRadius: const BorderRadius.all(
                                   Radius.circular(20),
                                 ),
-                                color: Colors.white,
+                                color: themeData.colorScheme.surface,
                                 boxShadow: [
                                   BoxShadow(
                                     blurRadius: 10,
@@ -136,16 +136,17 @@ class AdminHomeScreen extends StatelessWidget {
                                       ),
                                     ],
                                   ),
-                                  Divider(),
+                                  const Divider(),
                                   Expanded(
                                     child: ListView.builder(
-                                      physics: BouncingScrollPhysics(),
+                                      physics: const BouncingScrollPhysics(),
                                       itemCount: 15,
                                       itemBuilder: ((context, index) {
                                         return Column(
                                           children: [
                                             Container(
-                                              margin: EdgeInsets.only(top: 8),
+                                              margin:
+                                                  const EdgeInsets.only(top: 8),
                                               height: 50,
                                               decoration: BoxDecoration(
                                                 borderRadius:
@@ -160,39 +161,28 @@ class AdminHomeScreen extends StatelessWidget {
                                                           .spaceAround,
                                                   children: [
                                                     const Expanded(
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsets.only(
-                                                                right: 10),
-                                                        child: Text(
-                                                          'Student   ',
-                                                          maxLines: 1,
-                                                          overflow: TextOverflow
-                                                              .ellipsis,
-                                                        ),
+                                                      child: Text(
+                                                        'Student   ',
+                                                        maxLines: 1,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
                                                       ),
                                                     ),
-                                                    Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .only(
-                                                                right: 10),
-                                                        child: Column(
-                                                          children: const [
-                                                            Icon(
-                                                              Icons
-                                                                  .bar_chart_rounded,
-                                                              color:
-                                                                  Colors.grey,
-                                                            ),
-                                                            Text('143'),
-                                                          ],
-                                                        )),
+                                                    Column(
+                                                      children: const [
+                                                        Icon(
+                                                          Icons
+                                                              .bar_chart_rounded,
+                                                          color: Colors.grey,
+                                                        ),
+                                                        Text('143'),
+                                                      ],
+                                                    ),
                                                   ],
                                                 ),
                                               ),
                                             ),
-                                            Divider(),
+                                            const Divider(),
                                           ],
                                         );
                                       }),
@@ -202,18 +192,19 @@ class AdminHomeScreen extends StatelessWidget {
                               ),
                             ),
                             Container(
-                              padding: EdgeInsets.all(24),
-                              width: 500,
-                              height: 250,
+                              padding: const EdgeInsets.all(24),
+                              width: 600,
+                              height: 400,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.all(
+                                borderRadius: const BorderRadius.all(
                                   Radius.circular(20),
                                 ),
-                                color: Colors.white,
+                                color: themeData.colorScheme.surface,
                                 boxShadow: [
                                   BoxShadow(
                                     blurRadius: 10,
-                                    color: Color(0xff988487).withOpacity(0.4),
+                                    color: const Color(0xff988487)
+                                        .withOpacity(0.4),
                                   ),
                                 ],
                               ),
@@ -228,47 +219,69 @@ class AdminHomeScreen extends StatelessWidget {
                                         style: themeData.textTheme.headline6!
                                             .copyWith(fontSize: 16),
                                       ),
-                                      Assets.icons.message.image(
-                                        width: 24,
-                                        height: 24,
-                                      ),
+                                      Icon(Icons.email)
                                     ],
                                   ),
-                                  Divider(),
+                                  const Divider(),
                                   Expanded(
                                     child: ListView.builder(
-                                      physics: BouncingScrollPhysics(),
+                                      physics: const BouncingScrollPhysics(),
                                       itemCount: 15,
                                       itemBuilder: ((context, index) {
-                                        return Container(
-                                          margin: EdgeInsets.only(top: 8),
-                                          height: 50,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                          ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 10, right: 10),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceAround,
-                                              children: const [
-                                                Expanded(
-                                                  child: Padding(
-                                                    padding: EdgeInsets.only(
-                                                        right: 10),
-                                                    child: Text(
-                                                      'Student',
-                                                      maxLines: 1,
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
+                                        return Column(
+                                          children: [
+                                            Container(
+                                              margin:
+                                                  const EdgeInsets.only(top: 8),
+                                              height: 50,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                              ),
+                                              child: Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 10),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceAround,
+                                                  children: [
+                                                    Expanded(
+                                                      child: Text(
+                                                        'Message textMessage textMessage textMessagetextMessage textMessage textMessage text',
+                                                        maxLines: 1,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        style: themeData
+                                                            .textTheme.caption!
+                                                            .copyWith(
+                                                                fontSize: 13,
+                                                                color: Colors
+                                                                    .grey
+                                                                    .shade700),
+                                                      ),
                                                     ),
-                                                  ),
+                                                    const SizedBox(
+                                                      width: 60,
+                                                    ),
+                                                    Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .end,
+                                                      children: const [
+                                                        Icon(
+                                                          Icons.message,
+                                                          color: Colors.grey,
+                                                        ),
+                                                        Text('student name'),
+                                                      ],
+                                                    ),
+                                                  ],
                                                 ),
-                                              ],
+                                              ),
                                             ),
-                                          ),
+                                            const Divider(),
+                                          ],
                                         );
                                       }),
                                     ),
@@ -294,7 +307,7 @@ class AdminHomeScreen extends StatelessWidget {
       BuildContext context, String number, String title, Image image) {
     final themeData = Theme.of(context);
     return Container(
-      margin: EdgeInsets.only(left: 30),
+      margin: EdgeInsets.only(left: 35),
       width: 165,
       height: 165,
       decoration: BoxDecoration(

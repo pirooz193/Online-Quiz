@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:online_exam_test/adminHomeScreen.dart';
-import 'package:online_exam_test/adminPanelAllStudents.dart';
-import 'package:online_exam_test/adminPanelTeacher.dart';
-import 'package:online_exam_test/adminPanelWaitingList.dart';
-import 'package:online_exam_test/admin_panel_courses.dart';
-import 'package:online_exam_test/admin_panel_courses_students.dart';
+import 'package:online_exam_test/admin/adminHomeScreen.dart';
+import 'package:online_exam_test/admin/adminPanelAllStudents.dart';
+import 'package:online_exam_test/admin/adminPanelTeacher.dart';
+import 'package:online_exam_test/admin/adminPanelWaitingList.dart';
+import 'package:online_exam_test/admin/admin_panel_courses.dart';
+
 import 'package:online_exam_test/courseQuestions.dart';
 import 'package:online_exam_test/gen/assets.gen.dart';
 import 'package:online_exam_test/splashScreen.dart';
@@ -19,12 +19,12 @@ void main() {
         systemNavigationBarColor: Colors.white,
         systemNavigationBarIconBrightness: Brightness.dark),
   );
-  const SplashScreen();
+  // const SplashScreen();
   runApp(const MyApp());
 }
 
-final backgroundFirstColor = Colors.grey.shade300;
-final backgroundSecondColor = Colors.grey.shade200;
+// final backgroundFirstColor = Colors.grey.shade300;
+// final backgroundSecondColor = Colors.grey.shade200;
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -36,12 +36,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Online Quiz',
       theme: ThemeData(
+        // scaffoldBackgroundColor: Colors.grey.shade300,
+        scaffoldBackgroundColor: Color.fromARGB(255, 209, 229, 255),
         appBarTheme: AppBarTheme(
-          toolbarHeight: 50,
-          backgroundColor: Colors.white,
-          foregroundColor: Colors.grey.shade700,
-          elevation: 0,
-        ),
+            toolbarHeight: 50,
+            backgroundColor: Colors.white,
+            foregroundColor: Colors.grey.shade700,
+            elevation: 0),
         textTheme: const TextTheme(
           headline4: TextStyle(
             fontWeight: FontWeight.bold,
@@ -55,18 +56,13 @@ class MyApp extends StatelessWidget {
             fontWeight: FontWeight.bold,
             fontSize: 18,
           ),
-          subtitle1: TextStyle(
-            fontSize: 12,
-          ),
-          caption: TextStyle(
-            color: Colors.grey,
-            fontSize: 10,
-          ),
+          subtitle1: TextStyle(fontSize: 12),
+          caption: TextStyle(color: Colors.grey, fontSize: 10),
         ),
         colorScheme: const ColorScheme.light(
-          primary: Color.fromARGB(255, 105, 129, 236),
-          secondary: Color.fromARGB(255, 22, 32, 26),
-        ),
+            primary: Color.fromARGB(255, 105, 129, 236),
+            secondary: Color.fromARGB(255, 22, 32, 26),
+            surface: Colors.white),
       ),
       home: const MainScreen(),
     );
@@ -196,7 +192,7 @@ class _ButtomNavigation extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       height: 65,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: themeData.colorScheme.surface,
         boxShadow: [
           BoxShadow(
             blurRadius: 20,

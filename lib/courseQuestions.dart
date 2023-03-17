@@ -1,25 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:online_exam_test/adminHomeScreen.dart';
+import 'package:online_exam_test/admin/adminHomeScreen.dart';
 import 'package:online_exam_test/main.dart';
 
 class CourseQuestionsScreen extends StatelessWidget {
+  const CourseQuestionsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
     return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            backgroundFirstColor,
-            backgroundSecondColor,
-          ],
-        ),
-      ),
       child: Scaffold(
-        // floatingActionButton: FloatingActionButton.extended(
-        //     onPressed: () {}, label: Text('Finish')),
-        backgroundColor: Colors.transparent,
         appBar: AppBar(
           title: const Text('Course / Questions'),
           elevation: 0,
@@ -30,21 +21,20 @@ class CourseQuestionsScreen extends StatelessWidget {
                 Navigator.of(context).pop();
               },
               child: Padding(
-                padding: EdgeInsets.only(right: 34),
+                padding: const EdgeInsets.only(right: 34),
                 child: Row(
                   children: [
                     Icon(
                       Icons.pause,
                       size: 24,
-                      color: themeData.colorScheme.onPrimary,
+                      color: themeData.appBarTheme.foregroundColor,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 6,
                     ),
                     Text(
                       'Finish',
-                      style: themeData.textTheme.bodyText2!.copyWith(
-                        color: themeData.colorScheme.onPrimary,
+                      style: themeData.textTheme.headline6!.copyWith(
                         fontSize: 16,
                       ),
                     ),
@@ -55,165 +45,159 @@ class CourseQuestionsScreen extends StatelessWidget {
           ],
         ),
         body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 40, 20, 80),
-            child: Container(
-              height: 1000,
-              decoration: BoxDecoration(
-                color: themeData.colorScheme.surface,
-                borderRadius: BorderRadius.circular(24),
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 20,
-                    color: Colors.grey.shade300,
-                  ),
-                ],
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
+          child: Container(
+            height: 1000,
+            decoration: BoxDecoration(
+              color: themeData.colorScheme.surface,
+              // borderRadius: BorderRadius.circular(24),
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 20,
+                  color: Colors.grey.shade300,
+                ),
+              ],
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child:
+                  Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8, right: 8),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 8, right: 8),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          Expanded(
+                              child: Text(
+                            'Java / Spring',
+                            style: themeData.textTheme.subtitle2,
+                          )),
+                          Expanded(
+                              child: Text(
+                            'Questions',
+                            style: themeData.textTheme.headline6,
+                          )),
+                          Text(
+                            'Time : 30m',
+                            style: themeData.textTheme.subtitle2!.copyWith(
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                const Divider(),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: 5,
+                    itemBuilder: ((context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: SizedBox(
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+                            child: Column(
                               children: [
-                                Expanded(
-                                    child: Text(
-                                  'Java / Spring',
-                                  style: themeData.textTheme.subtitle2,
-                                )),
-                                Expanded(
-                                    child: Text(
-                                  'Questions',
-                                  style: themeData.textTheme.headline6,
-                                )),
-                                Text(
-                                  'Time : 30m',
-                                  style:
-                                      themeData.textTheme.subtitle2!.copyWith(
-                                    color: Colors.grey,
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: const [
+                                    Expanded(
+                                      child: Text(
+                                          '1.Which of the following is NOT a benefit of using Java?'),
+                                    ),
+                                    SizedBox(
+                                      width: 8,
+                                    ),
+                                    Text('Score: 2')
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 32,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 8),
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          MyCheckBox(
+                                            value: false,
+                                            onTap: () {},
+                                          ),
+                                          const SizedBox(
+                                            width: 8,
+                                          ),
+                                          const Text('1.test'),
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Row(
+                                        children: [
+                                          MyCheckBox(
+                                            value: false,
+                                            onTap: () {},
+                                          ),
+                                          const SizedBox(
+                                            width: 8,
+                                          ),
+                                          const Text('1.test'),
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Row(
+                                        children: [
+                                          MyCheckBox(
+                                            value: false,
+                                            onTap: () {},
+                                          ),
+                                          const SizedBox(
+                                            width: 8,
+                                          ),
+                                          const Text('1.test'),
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Row(
+                                        children: [
+                                          MyCheckBox(
+                                            value: true,
+                                            onTap: () {},
+                                          ),
+                                          const SizedBox(
+                                            width: 8,
+                                          ),
+                                          const Text('1.test'),
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        height: 20,
+                                      ),
+                                      const Divider(),
+                                    ],
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      const Divider(),
-                      Expanded(
-                        child: ListView.builder(
-                          itemCount: 15,
-                          itemBuilder: ((context, index) {
-                            return Container(
-                              margin: EdgeInsets.only(top: 12),
-                              height: 250,
-                              decoration: BoxDecoration(
-                                color: Colors.grey.shade100,
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(20, 20, 20, 20),
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Expanded(
-                                          child: Text(
-                                              '1.Which of the following is NOT a benefit of using Java?'),
-                                        ),
-                                        Text('Score: 2')
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 32,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 8),
-                                      child: Column(
-                                        children: [
-                                          Row(
-                                            children: [
-                                              MyCheckBox(
-                                                value: false,
-                                                onTap: () {},
-                                              ),
-                                              SizedBox(
-                                                width: 8,
-                                              ),
-                                              Text('1.test'),
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            height: 10,
-                                          ),
-                                          Row(
-                                            children: [
-                                              MyCheckBox(
-                                                value: false,
-                                                onTap: () {},
-                                              ),
-                                              SizedBox(
-                                                width: 8,
-                                              ),
-                                              Text('1.test'),
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            height: 10,
-                                          ),
-                                          Row(
-                                            children: [
-                                              MyCheckBox(
-                                                value: false,
-                                                onTap: () {},
-                                              ),
-                                              SizedBox(
-                                                width: 8,
-                                              ),
-                                              Text('1.test'),
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            height: 10,
-                                          ),
-                                          Row(
-                                            children: [
-                                              MyCheckBox(
-                                                value: true,
-                                                onTap: () {},
-                                              ),
-                                              SizedBox(
-                                                width: 8,
-                                              ),
-                                              Text('1.test'),
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            height: 10,
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
-                          }),
                         ),
-                      ),
-                    ]),
-              ),
+                      );
+                    }),
+                  ),
+                ),
+              ]),
             ),
           ),
         ),
