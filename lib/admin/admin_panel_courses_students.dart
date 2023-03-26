@@ -28,10 +28,10 @@ class AdminPanelCoursesStudents extends StatelessWidget {
               padding: const EdgeInsets.only(right: 34),
               child: Row(
                 children: [
-                  const Icon(
+                  Icon(
                     CupertinoIcons.add,
                     size: 24,
-                    color: Colors.black,
+                    color: themeData.colorScheme.onPrimary,
                   ),
                   const SizedBox(
                     width: 6,
@@ -59,7 +59,7 @@ class AdminPanelCoursesStudents extends StatelessWidget {
                   height: 40,
                   width: 300,
                   decoration: BoxDecoration(
-                    color: Colors.grey.shade400,
+                    color: themeData.colorScheme.onPrimary.withOpacity(0.4),
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: const TextField(
@@ -97,7 +97,8 @@ class AdminPanelCoursesStudents extends StatelessWidget {
                         boxShadow: [
                           BoxShadow(
                             blurRadius: 20,
-                            color: Colors.grey.shade300,
+                            color: themeData.colorScheme.onPrimary
+                                .withOpacity(0.2),
                           ),
                         ],
                       ),
@@ -120,7 +121,7 @@ class AdminPanelCoursesStudents extends StatelessWidget {
                                       style: themeData.textTheme.headline6!
                                           .copyWith(
                                         fontSize: 14,
-                                        color: Colors.black,
+                                        color: themeData.colorScheme.onPrimary,
                                       ),
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
@@ -133,7 +134,8 @@ class AdminPanelCoursesStudents extends StatelessWidget {
                                       style: themeData.textTheme.headline6!
                                           .copyWith(
                                         fontSize: 14,
-                                        color: Colors.grey,
+                                        color: themeData.colorScheme.onPrimary
+                                            .withOpacity(0.5),
                                       ),
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
@@ -151,7 +153,8 @@ class AdminPanelCoursesStudents extends StatelessWidget {
                               overflow: TextOverflow.ellipsis,
                               style: themeData.textTheme.subtitle1!.copyWith(
                                 fontSize: 15,
-                                color: Colors.grey.shade800,
+                                color: themeData.colorScheme.onPrimary
+                                    .withOpacity(0.8),
                               ),
                             ),
                             const SizedBox(

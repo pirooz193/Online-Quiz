@@ -28,7 +28,7 @@ class AddNewStudentScreen extends StatelessWidget {
                     boxShadow: [
                       BoxShadow(
                         blurRadius: 10,
-                        color: Color(0xff988487).withOpacity(0.6),
+                        color: themeData.colorScheme.onPrimary.withOpacity(0.2),
                       ),
                     ],
                   ),
@@ -48,27 +48,42 @@ class AddNewStudentScreen extends StatelessWidget {
                       SizedBox(
                         height: 32,
                       ),
-                      const TextField(
+                      TextField(
                         decoration: InputDecoration(
-                          label: Text('Full-name'),
+                          label: Text(
+                            'Full-name',
+                            style: themeData.textTheme.subtitle1!.copyWith(
+                                color: themeData.colorScheme.onPrimary
+                                    .withOpacity(0.8)),
+                          ),
                         ),
                       ),
                       SizedBox(
                         height: 32,
                       ),
-                      const TextField(
+                      TextField(
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
-                          label: Text('Student Code'),
+                          label: Text(
+                            'Student Code',
+                            style: themeData.textTheme.subtitle1!.copyWith(
+                                color: themeData.colorScheme.onPrimary
+                                    .withOpacity(0.8)),
+                          ),
                         ),
                       ),
                       SizedBox(
                         height: 32,
                       ),
-                      const TextField(
+                      TextField(
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
-                          label: Text('Mobile'),
+                          label: Text(
+                            'Mobile',
+                            style: themeData.textTheme.subtitle1!.copyWith(
+                                color: themeData.colorScheme.onPrimary
+                                    .withOpacity(0.8)),
+                          ),
                         ),
                       ),
                       SizedBox(
@@ -86,8 +101,8 @@ class AddNewStudentScreen extends StatelessWidget {
                             child: Center(
                               child: Text(
                                 'Add Student',
-                                style: themeData.textTheme.bodyText2!.copyWith(
-                                    color: themeData.colorScheme.onPrimary),
+                                style: themeData.textTheme.bodyText1!
+                                    .copyWith(color: Colors.white),
                               ),
                             ),
                           ),

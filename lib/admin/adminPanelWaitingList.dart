@@ -23,7 +23,7 @@ class WaitingList extends StatelessWidget {
                   height: 40,
                   width: 300,
                   decoration: BoxDecoration(
-                    color: Colors.grey.shade400,
+                    color: themeData.colorScheme.onPrimary.withOpacity(0.4),
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: const TextField(
@@ -60,8 +60,9 @@ class WaitingList extends StatelessWidget {
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(
-                            blurRadius: 20,
-                            color: Colors.grey.shade300,
+                            blurRadius: 10,
+                            color: themeData.colorScheme.onPrimary
+                                .withOpacity(0.2),
                           ),
                         ],
                       ),
@@ -84,7 +85,7 @@ class WaitingList extends StatelessWidget {
                                       style: themeData.textTheme.headline6!
                                           .copyWith(
                                         fontSize: 14,
-                                        color: Colors.black,
+                                        color: themeData.colorScheme.onPrimary,
                                       ),
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
@@ -99,7 +100,8 @@ class WaitingList extends StatelessWidget {
                                       style:
                                           themeData.textTheme.caption!.copyWith(
                                         fontSize: 15,
-                                        color: Colors.grey.shade500,
+                                        color: themeData.colorScheme.onPrimary
+                                            .withOpacity(0.5),
                                       ),
                                     ),
                                   ],
@@ -114,7 +116,8 @@ class WaitingList extends StatelessWidget {
                                 'student code',
                                 style: themeData.textTheme.headline6!.copyWith(
                                   fontSize: 14,
-                                  color: Colors.grey.shade600,
+                                  color: themeData.colorScheme.onPrimary
+                                      .withOpacity(0.6),
                                 ),
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,

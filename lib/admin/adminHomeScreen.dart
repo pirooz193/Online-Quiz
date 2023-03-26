@@ -23,14 +23,15 @@ class AdminHomeScreen extends StatelessWidget {
               children: [
                 Text(
                   'Logout',
-                  style: themeData.textTheme.subtitle2!
-                      .copyWith(color: Colors.grey.shade700),
+                  style: themeData.textTheme.subtitle2!.copyWith(
+                      color: themeData.colorScheme.onPrimary.withOpacity(0.7)),
                 ),
                 IconButton(
                   onPressed: () {
                     // Navigator.of(context).;
                   },
-                  icon: const Icon(Icons.logout, color: Colors.black),
+                  icon: Icon(Icons.logout,
+                      color: themeData.colorScheme.onPrimary.withOpacity(0.7)),
                 ),
               ],
             ),
@@ -81,7 +82,8 @@ class AdminHomeScreen extends StatelessWidget {
                                 context,
                                 '680',
                                 'Questions',
-                                Assets.icons.questions.image(),
+                                Assets.icons.questions
+                                    .image(width: 50, height: 50),
                               ),
                               _showApplicationData(
                                 context,
@@ -115,7 +117,8 @@ class AdminHomeScreen extends StatelessWidget {
                                 boxShadow: [
                                   BoxShadow(
                                     blurRadius: 10,
-                                    color: Color(0xff988487).withOpacity(0.4),
+                                    color: themeData.colorScheme.onPrimary
+                                        .withOpacity(0.2),
                                   ),
                                 ],
                               ),
@@ -136,7 +139,10 @@ class AdminHomeScreen extends StatelessWidget {
                                       ),
                                     ],
                                   ),
-                                  const Divider(),
+                                  Divider(
+                                    color: themeData.colorScheme.onPrimary
+                                        .withOpacity(0.5),
+                                  ),
                                   Expanded(
                                     child: ListView.builder(
                                       physics: const BouncingScrollPhysics(),
@@ -160,29 +166,44 @@ class AdminHomeScreen extends StatelessWidget {
                                                       MainAxisAlignment
                                                           .spaceAround,
                                                   children: [
-                                                    const Expanded(
+                                                    Expanded(
                                                       child: Text(
                                                         'Student   ',
                                                         maxLines: 1,
                                                         overflow: TextOverflow
                                                             .ellipsis,
+                                                        style: themeData
+                                                            .textTheme
+                                                            .subtitle1,
                                                       ),
                                                     ),
                                                     Column(
-                                                      children: const [
+                                                      children: [
                                                         Icon(
                                                           Icons
                                                               .bar_chart_rounded,
-                                                          color: Colors.grey,
+                                                          color: themeData
+                                                              .colorScheme
+                                                              .onPrimary
+                                                              .withOpacity(0.8),
                                                         ),
-                                                        Text('143'),
+                                                        Text(
+                                                          '143',
+                                                          style: themeData
+                                                              .textTheme
+                                                              .subtitle1,
+                                                        ),
                                                       ],
                                                     ),
                                                   ],
                                                 ),
                                               ),
                                             ),
-                                            const Divider(),
+                                            Divider(
+                                              color: themeData
+                                                  .colorScheme.onPrimary
+                                                  .withOpacity(0.5),
+                                            ),
                                           ],
                                         );
                                       }),
@@ -203,8 +224,8 @@ class AdminHomeScreen extends StatelessWidget {
                                 boxShadow: [
                                   BoxShadow(
                                     blurRadius: 10,
-                                    color: const Color(0xff988487)
-                                        .withOpacity(0.4),
+                                    color: themeData.colorScheme.onPrimary
+                                        .withOpacity(0.2),
                                   ),
                                 ],
                               ),
@@ -219,10 +240,16 @@ class AdminHomeScreen extends StatelessWidget {
                                         style: themeData.textTheme.headline6!
                                             .copyWith(fontSize: 16),
                                       ),
-                                      Icon(Icons.email)
+                                      Icon(
+                                        Icons.email,
+                                        color: themeData.colorScheme.onPrimary,
+                                      )
                                     ],
                                   ),
-                                  const Divider(),
+                                  Divider(
+                                    color: themeData.colorScheme.onPrimary
+                                        .withOpacity(0.5),
+                                  ),
                                   Expanded(
                                     child: ListView.builder(
                                       physics: const BouncingScrollPhysics(),
@@ -256,9 +283,11 @@ class AdminHomeScreen extends StatelessWidget {
                                                             .textTheme.caption!
                                                             .copyWith(
                                                                 fontSize: 13,
-                                                                color: Colors
-                                                                    .grey
-                                                                    .shade700),
+                                                                color: themeData
+                                                                    .colorScheme
+                                                                    .onPrimary
+                                                                    .withOpacity(
+                                                                        0.5)),
                                                       ),
                                                     ),
                                                     const SizedBox(
@@ -268,19 +297,34 @@ class AdminHomeScreen extends StatelessWidget {
                                                       crossAxisAlignment:
                                                           CrossAxisAlignment
                                                               .end,
-                                                      children: const [
+                                                      children: [
                                                         Icon(
                                                           Icons.message,
                                                           color: Colors.grey,
                                                         ),
-                                                        Text('student name'),
+                                                        Text(
+                                                          'student name',
+                                                          style: themeData
+                                                              .textTheme
+                                                              .subtitle1!
+                                                              .copyWith(
+                                                                  color: themeData
+                                                                      .colorScheme
+                                                                      .onPrimary
+                                                                      .withOpacity(
+                                                                          0.9)),
+                                                        ),
                                                       ],
                                                     ),
                                                   ],
                                                 ),
                                               ),
                                             ),
-                                            const Divider(),
+                                            Divider(
+                                              color: themeData
+                                                  .colorScheme.onPrimary
+                                                  .withOpacity(0.5),
+                                            ),
                                           ],
                                         );
                                       }),
@@ -312,11 +356,11 @@ class AdminHomeScreen extends StatelessWidget {
       height: 165,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(25)),
-        color: Colors.white,
+        color: themeData.colorScheme.surface,
         boxShadow: [
           BoxShadow(
             blurRadius: 10,
-            color: Color(0xff988487).withOpacity(0.4),
+            color: themeData.colorScheme.onPrimary.withOpacity(0.2),
           ),
         ],
       ),
@@ -326,7 +370,8 @@ class AdminHomeScreen extends StatelessWidget {
           children: [
             Text(
               number,
-              style: themeData.textTheme.headline4!.apply(color: Colors.black),
+              style: themeData.textTheme.headline4!.apply(
+                  color: themeData.colorScheme.onPrimary.withOpacity(0.9)),
             ),
             const SizedBox(
               height: 20,
@@ -337,7 +382,8 @@ class AdminHomeScreen extends StatelessWidget {
             ),
             Text(
               title,
-              style: const TextStyle(color: Colors.black38),
+              style: themeData.textTheme.subtitle1!.apply(
+                  color: themeData.colorScheme.onPrimary.withOpacity(0.7)),
             )
           ],
         ),

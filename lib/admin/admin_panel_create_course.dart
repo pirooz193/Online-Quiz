@@ -28,7 +28,7 @@ class CreateCourseScreen extends StatelessWidget {
                     boxShadow: [
                       BoxShadow(
                         blurRadius: 20,
-                        color: Colors.grey.shade300,
+                        color: themeData.colorScheme.onPrimary.withOpacity(0.3),
                       ),
                     ],
                   ),
@@ -48,25 +48,34 @@ class CreateCourseScreen extends StatelessWidget {
                       SizedBox(
                         height: 32,
                       ),
-                      const TextField(
+                      TextField(
                         decoration: InputDecoration(
-                          label: Text('Title'),
+                          label: Text(
+                            'Title',
+                            style: themeData.textTheme.subtitle1,
+                          ),
                         ),
                       ),
                       SizedBox(
                         height: 32,
                       ),
-                      const TextField(
+                      TextField(
                         decoration: InputDecoration(
-                          label: Text('Master Code'),
+                          label: Text(
+                            'Master Code',
+                            style: themeData.textTheme.subtitle1,
+                          ),
                         ),
                       ),
                       SizedBox(
                         height: 32,
                       ),
-                      const TextField(
+                      TextField(
                         decoration: InputDecoration(
-                          label: Text('Capacity'),
+                          label: Text(
+                            'Capacity',
+                            style: themeData.textTheme.subtitle1,
+                          ),
                         ),
                       ),
                       SizedBox(
@@ -84,8 +93,8 @@ class CreateCourseScreen extends StatelessWidget {
                             child: Center(
                               child: Text(
                                 'Create Course',
-                                style: themeData.textTheme.bodyText2!.copyWith(
-                                    color: themeData.colorScheme.onPrimary),
+                                style: themeData.textTheme.bodyText1!
+                                    .copyWith(color: Colors.white),
                               ),
                             ),
                           ),

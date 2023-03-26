@@ -52,8 +52,8 @@ class CourseQuestionsScreen extends StatelessWidget {
               // borderRadius: BorderRadius.circular(24),
               boxShadow: [
                 BoxShadow(
-                  blurRadius: 20,
-                  color: Colors.grey.shade300,
+                  blurRadius: 10,
+                  color: themeData.colorScheme.onPrimary.withOpacity(0.2),
                 ),
               ],
             ),
@@ -82,7 +82,8 @@ class CourseQuestionsScreen extends StatelessWidget {
                           Text(
                             'Time : 30m',
                             style: themeData.textTheme.subtitle2!.copyWith(
-                              color: Colors.grey,
+                              color: themeData.colorScheme.onPrimary
+                                  .withOpacity(0.5),
                             ),
                           ),
                         ],

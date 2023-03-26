@@ -28,10 +28,10 @@ class AdminPanelCourses extends StatelessWidget {
               padding: const EdgeInsets.only(right: 34),
               child: Row(
                 children: [
-                  const Icon(
+                  Icon(
                     CupertinoIcons.add,
                     size: 24,
-                    color: Colors.black,
+                    color: themeData.colorScheme.onPrimary,
                   ),
                   const SizedBox(
                     width: 6,
@@ -96,8 +96,9 @@ class AdminPanelCourses extends StatelessWidget {
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(
-                            blurRadius: 20,
-                            color: Colors.grey.shade300,
+                            blurRadius: 10,
+                            color: themeData.colorScheme.onPrimary
+                                .withOpacity(0.2),
                           ),
                         ],
                       ),
@@ -120,7 +121,8 @@ class AdminPanelCourses extends StatelessWidget {
                                       style: themeData.textTheme.headline6!
                                           .copyWith(
                                         fontSize: 14,
-                                        color: Colors.black,
+                                        color: themeData.colorScheme.onPrimary
+                                            .withOpacity(0.9),
                                       ),
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
@@ -133,7 +135,8 @@ class AdminPanelCourses extends StatelessWidget {
                                       style: themeData.textTheme.headline6!
                                           .copyWith(
                                         fontSize: 14,
-                                        color: Colors.grey,
+                                        color: themeData.colorScheme.onPrimary
+                                            .withOpacity(0.5),
                                       ),
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
@@ -152,7 +155,8 @@ class AdminPanelCourses extends StatelessWidget {
                                   style:
                                       themeData.textTheme.subtitle1!.copyWith(
                                     fontSize: 15,
-                                    color: Colors.grey.shade700,
+                                    color: themeData.colorScheme.onPrimary
+                                        .withOpacity(0.7),
                                   ),
                                 ),
                                 Text(
@@ -160,7 +164,8 @@ class AdminPanelCourses extends StatelessWidget {
                                   style:
                                       themeData.textTheme.subtitle1!.copyWith(
                                     fontSize: 15,
-                                    color: Colors.grey.shade700,
+                                    color: themeData.colorScheme.onPrimary
+                                        .withOpacity(0.7),
                                   ),
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -190,8 +195,10 @@ class AdminPanelCourses extends StatelessWidget {
                                 Text(
                                   'questions',
                                   style: themeData.textTheme.caption!.copyWith(
-                                      fontSize: 10,
-                                      color: Colors.grey.shade700),
+                                    fontSize: 10,
+                                    color: themeData.colorScheme.onPrimary
+                                        .withOpacity(0.7),
+                                  ),
                                 )
                               ],
                             ),
@@ -218,8 +225,10 @@ class AdminPanelCourses extends StatelessWidget {
                                 Text(
                                   'students',
                                   style: themeData.textTheme.caption!.copyWith(
-                                      fontSize: 10,
-                                      color: Colors.grey.shade700),
+                                    fontSize: 10,
+                                    color: themeData.colorScheme.onPrimary
+                                        .withOpacity(0.7),
+                                  ),
                                 )
                               ],
                             ),

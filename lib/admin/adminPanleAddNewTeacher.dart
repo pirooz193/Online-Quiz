@@ -8,7 +8,9 @@ class AdminPanelAddNewTeacherScreen extends StatelessWidget {
     final themeData = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add New Teacher'),
+        title: const Text(
+          'Add New Teacher',
+        ),
         elevation: 0,
       ),
       body: SafeArea(
@@ -26,7 +28,7 @@ class AdminPanelAddNewTeacherScreen extends StatelessWidget {
                     boxShadow: [
                       BoxShadow(
                         blurRadius: 10,
-                        color: const Color(0xff988487).withOpacity(0.6),
+                        color: themeData.colorScheme.onPrimary.withOpacity(0.3),
                       ),
                     ],
                   ),
@@ -39,37 +41,44 @@ class AdminPanelAddNewTeacherScreen extends StatelessWidget {
                           style: themeData.textTheme.headline6,
                         ),
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 16,
                       ),
                       const Divider(),
-                      const SizedBox(
+                      SizedBox(
                         height: 32,
                       ),
-                      const TextField(
+                      TextField(
                         decoration: InputDecoration(
-                          label: Text('Full-name'),
+                          label: Text(
+                            'full-name',
+                            style: themeData.textTheme.subtitle1,
+                          ),
                         ),
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 32,
                       ),
-                      const TextField(
-                        keyboardType: TextInputType.number,
+                      TextField(
                         decoration: InputDecoration(
-                          label: Text('Teacher Code'),
+                          label: Text(
+                            'Teacher Code',
+                            style: themeData.textTheme.subtitle1,
+                          ),
                         ),
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 32,
                       ),
-                      const TextField(
-                        keyboardType: TextInputType.number,
+                      TextField(
                         decoration: InputDecoration(
-                          label: Text('Mobile'),
+                          label: Text(
+                            'Mobile',
+                            style: themeData.textTheme.subtitle1,
+                          ),
                         ),
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 64,
                       ),
                       Center(
@@ -84,8 +93,8 @@ class AdminPanelAddNewTeacherScreen extends StatelessWidget {
                             child: Center(
                               child: Text(
                                 'Add Teacher',
-                                style: themeData.textTheme.bodyText2!.copyWith(
-                                    color: themeData.colorScheme.onPrimary),
+                                style: themeData.textTheme.bodyText1!
+                                    .copyWith(color: Colors.white),
                               ),
                             ),
                           ),

@@ -23,57 +23,135 @@ void main() {
   runApp(const MyApp());
 }
 
-// final backgroundFirstColor = Colors.grey.shade300;
-// final backgroundSecondColor = Colors.grey.shade200;
-
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
+  ThemeMode _themeMode = ThemeMode.light;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Online Quiz',
-      theme: ThemeData(
-        // scaffoldBackgroundColor: Colors.grey.shade300,
-        scaffoldBackgroundColor: Color.fromARGB(255, 209, 229, 255),
-        appBarTheme: AppBarTheme(
-            toolbarHeight: 50,
-            backgroundColor: Colors.white,
-            foregroundColor: Colors.grey.shade700,
-            elevation: 0),
-        textTheme: const TextTheme(
-          headline4: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 30,
-          ),
-          headline5: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 25,
-          ),
-          headline6: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
-          ),
-          subtitle1: TextStyle(fontSize: 12),
-          caption: TextStyle(color: Colors.grey, fontSize: 10),
-        ),
-        colorScheme: const ColorScheme.light(
-            primary: Color.fromARGB(255, 105, 129, 236),
-            secondary: Color.fromARGB(255, 22, 32, 26),
-            surface: Colors.white),
+      theme: _themeMode == ThemeMode.dark
+          ? MyAppThemeConfig.dark().getThemeData()
+          : MyAppThemeConfig.light().getThemeData(),
+      home: MainScreen(
+        toggleThemeMode: () {
+          setState(() {
+            if (_themeMode == ThemeMode.dark)
+              _themeMode = ThemeMode.light;
+            else
+              _themeMode = ThemeMode.dark;
+          });
+        },
       ),
-      home: const MainScreen(),
+    );
+  }
+}
+
+class MyAppThemeConfig {
+  final Color primaryColor = Color.fromARGB(255, 105, 129, 236);
+
+  final Color primaryTextColor;
+  final Color secondaryTextColor;
+  final Color surfaceColor;
+  final Color backgroundColor;
+  final Color foregroundColor;
+  final Color onPrimary;
+  final Color scaffoldBackgroundColor;
+  final Color appBarColor;
+  final Brightness brightness;
+  MyAppThemeConfig(
+      {required this.brightness,
+      required this.primaryTextColor,
+      required this.secondaryTextColor,
+      required this.surfaceColor,
+      required this.backgroundColor,
+      required this.foregroundColor,
+      required this.onPrimary,
+      required this.scaffoldBackgroundColor,
+      required this.appBarColor});
+
+  MyAppThemeConfig.dark()
+      : primaryTextColor = Colors.white,
+        secondaryTextColor = Colors.white70,
+        surfaceColor = Colors.black.withOpacity(0.6),
+        backgroundColor = Color.fromARGB(255, 30, 30, 30),
+        onPrimary = Colors.white,
+        foregroundColor = Colors.white,
+        // scaffoldBackgroundColor = Color(0x0dffffff),
+        scaffoldBackgroundColor = Color.fromARGB(158, 54, 54, 54),
+        appBarColor = Colors.black,
+        brightness = Brightness.dark;
+
+  MyAppThemeConfig.light()
+      : primaryTextColor = Colors.grey.shade900,
+        onPrimary = Colors.black,
+        secondaryTextColor = Color.fromARGB(255, 22, 32, 26),
+        surfaceColor = Colors.white,
+        backgroundColor = Colors.white,
+        foregroundColor = Colors.grey.shade700,
+        scaffoldBackgroundColor = Color.fromARGB(255, 209, 229, 255),
+        appBarColor = Color.fromARGB(255, 235, 235, 235),
+        brightness = Brightness.light;
+
+  ThemeData getThemeData() {
+    return ThemeData(
+      // scaffoldBackgroundColor: Colors.grey.shade300,
+      scaffoldBackgroundColor: scaffoldBackgroundColor,
+      appBarTheme: AppBarTheme(
+          toolbarHeight: 50,
+          backgroundColor: backgroundColor,
+          foregroundColor: foregroundColor,
+          elevation: 0),
+      textTheme: TextTheme(
+        bodyText2: TextStyle(
+          // fontWeight: FontWeight.bold,
+          fontSize: 20,
+          color: onPrimary,
+        ),
+        headline4: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 30,
+          color: onPrimary,
+        ),
+        headline5: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 25,
+          color: onPrimary,
+        ),
+        headline6: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 18,
+          color: onPrimary,
+        ),
+        subtitle1: TextStyle(fontSize: 12, color: onPrimary),
+        subtitle2: TextStyle(fontSize: 15, color: onPrimary),
+        caption: TextStyle(color: Colors.grey, fontSize: 10),
+      ),
+      colorScheme: ColorScheme.light(
+          primary: primaryColor,
+          secondary: secondaryTextColor,
+          onPrimary: onPrimary,
+          surface: surfaceColor),
     );
   }
 }
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+  final Function() toggleThemeMode;
+
+  const MainScreen({super.key, required this.toggleThemeMode});
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<MainScreen> createState() => _MainScreenState(toggleThemeMode);
 }
 
 const int courseIndex = 0;
@@ -86,6 +164,7 @@ const double bottomNavigationHight = 65;
 class _MainScreenState extends State<MainScreen> {
   int selectedScreenIndex = homeIndex;
   final List<int> history = [];
+  final Function() toggleThemeMode;
 
   GlobalKey<NavigatorState> _courseKey = GlobalKey();
   GlobalKey<NavigatorState> _studentKey = GlobalKey();
@@ -100,6 +179,8 @@ class _MainScreenState extends State<MainScreen> {
     teacherIndex: _teacherKey,
     waitingListIndex: _waitingListKey,
   };
+
+  _MainScreenState(this.toggleThemeMode);
 
   Future<bool> _onWillPop() async {
     final NavigatorState currentSelectedNavigatorState =
@@ -119,6 +200,7 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final themeData = Theme.of(context);
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
@@ -146,6 +228,7 @@ class _MainScreenState extends State<MainScreen> {
                 left: 0,
                 right: 0,
                 child: _ButtomNavigation(
+                  toggleThemeMode: toggleThemeMode,
                   selectedIndex: selectedScreenIndex,
                   onTap: (int index) {
                     setState(() {
@@ -179,10 +262,12 @@ class _MainScreenState extends State<MainScreen> {
 class _ButtomNavigation extends StatelessWidget {
   final Function(int index) onTap;
   final int selectedIndex;
+  final Function() toggleThemeMode;
   const _ButtomNavigation({
     Key? key,
     required this.onTap,
     required this.selectedIndex,
+    required this.toggleThemeMode,
   }) : super(key: key);
 
   @override
@@ -195,8 +280,8 @@ class _ButtomNavigation extends StatelessWidget {
         color: themeData.colorScheme.surface,
         boxShadow: [
           BoxShadow(
-            blurRadius: 20,
-            color: Color(0xff988487).withOpacity(0.6),
+            blurRadius: 10,
+            color: themeData.colorScheme.onPrimary.withOpacity(0.2),
           ),
         ],
       ),
@@ -247,6 +332,16 @@ class _ButtomNavigation extends StatelessWidget {
               onTap(waitingListIndex);
             },
             isActive: selectedIndex == waitingListIndex,
+          ),
+          InkWell(
+            onTap: toggleThemeMode,
+            child: Padding(
+                padding: const EdgeInsets.fromLTRB(8, 0, 16, 0),
+                child: Icon(
+                  Icons.sunny,
+                  size: 20,
+                  color: themeData.colorScheme.onPrimary.withOpacity(0.5),
+                )),
           ),
         ],
       ),
