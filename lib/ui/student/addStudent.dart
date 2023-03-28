@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:online_exam_test/main.dart';
 
 class AddNewStudentScreen extends StatelessWidget {
   const AddNewStudentScreen({super.key});

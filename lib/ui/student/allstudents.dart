@@ -1,16 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:online_exam_test/admin/adminPanleAddNewTeacher.dart';
 
-class AdminPanelTeachersScreen extends StatelessWidget {
-  const AdminPanelTeachersScreen({super.key});
+import 'addStudent.dart';
+
+class AdminpanelAllStudentScreen extends StatelessWidget {
+  const AdminpanelAllStudentScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Teachers'),
+        title: const Text('Students'),
         elevation: 0,
         actions: [
           TextButton(
@@ -18,7 +19,7 @@ class AdminPanelTeachersScreen extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => AdminPanelAddNewTeacherScreen(),
+                  builder: (context) => const AddNewStudentScreen(),
                 ),
               );
             },
@@ -35,7 +36,7 @@ class AdminPanelTeachersScreen extends StatelessWidget {
                     width: 6,
                   ),
                   Text(
-                    'New Teacher',
+                    'New Student',
                     style: themeData.textTheme.bodyText2!.copyWith(
                       fontSize: 16,
                     ),
@@ -57,7 +58,7 @@ class AdminPanelTeachersScreen extends StatelessWidget {
                   height: 40,
                   width: 300,
                   decoration: BoxDecoration(
-                    color: themeData.colorScheme.onPrimary.withOpacity(0.4),
+                    color: Colors.grey.shade400,
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: const TextField(
@@ -115,12 +116,11 @@ class AdminPanelTeachersScreen extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      'Teacher name ',
+                                      'Student name ',
                                       style: themeData.textTheme.headline6!
                                           .copyWith(
                                         fontSize: 14,
-                                        color: themeData.colorScheme.onPrimary
-                                            .withOpacity(0.9),
+                                        color: themeData.colorScheme.onPrimary,
                                       ),
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
@@ -129,12 +129,12 @@ class AdminPanelTeachersScreen extends StatelessWidget {
                                       height: 6,
                                     ),
                                     Text(
-                                      'Teacher code',
+                                      'student code',
                                       style: themeData.textTheme.headline6!
                                           .copyWith(
                                         fontSize: 14,
                                         color: themeData.colorScheme.onPrimary
-                                            .withOpacity(0.5),
+                                            .withOpacity(0.4),
                                       ),
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,

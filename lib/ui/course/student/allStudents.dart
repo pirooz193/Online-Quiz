@@ -1,18 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:online_exam_test/admin/admin_panel_courses_students.dart';
-import 'package:online_exam_test/admin/admin_panel_create_course.dart';
-import 'package:online_exam_test/courseQuestions.dart';
+import 'package:online_exam_test/ui/student/addStudent.dart';
 
-class AdminPanelCourses extends StatelessWidget {
-  const AdminPanelCourses({super.key});
+import 'package:online_exam_test/main.dart';
+
+class AdminPanelCoursesStudents extends StatelessWidget {
+  const AdminPanelCoursesStudents({super.key});
 
   @override
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Courses'),
+        title: const Text('Students'),
         elevation: 0,
         actions: [
           TextButton(
@@ -20,7 +20,7 @@ class AdminPanelCourses extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => CreateCourseScreen(),
+                  builder: (context) => AddNewStudentScreen(),
                 ),
               );
             },
@@ -37,7 +37,7 @@ class AdminPanelCourses extends StatelessWidget {
                     width: 6,
                   ),
                   Text(
-                    'New Course',
+                    'New Student',
                     style: themeData.textTheme.bodyText2!.copyWith(
                       fontSize: 16,
                     ),
@@ -59,7 +59,7 @@ class AdminPanelCourses extends StatelessWidget {
                   height: 40,
                   width: 300,
                   decoration: BoxDecoration(
-                    color: Colors.grey.shade400,
+                    color: themeData.colorScheme.onPrimary.withOpacity(0.4),
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: const TextField(
@@ -96,7 +96,7 @@ class AdminPanelCourses extends StatelessWidget {
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(
-                            blurRadius: 10,
+                            blurRadius: 20,
                             color: themeData.colorScheme.onPrimary
                                 .withOpacity(0.2),
                           ),
@@ -117,12 +117,11 @@ class AdminPanelCourses extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      'Course name ',
+                                      'Student name ',
                                       style: themeData.textTheme.headline6!
                                           .copyWith(
                                         fontSize: 14,
-                                        color: themeData.colorScheme.onPrimary
-                                            .withOpacity(0.9),
+                                        color: themeData.colorScheme.onPrimary,
                                       ),
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
@@ -131,7 +130,7 @@ class AdminPanelCourses extends StatelessWidget {
                                       height: 6,
                                     ),
                                     Text(
-                                      'Master',
+                                      'student code',
                                       style: themeData.textTheme.headline6!
                                           .copyWith(
                                         fontSize: 14,
@@ -146,91 +145,28 @@ class AdminPanelCourses extends StatelessWidget {
                               ),
                             ),
                             SizedBox(
-                              width: 8,
+                              width: 4,
                             ),
-                            Row(
-                              children: [
-                                Text(
-                                  '0',
-                                  style:
-                                      themeData.textTheme.subtitle1!.copyWith(
-                                    fontSize: 15,
-                                    color: themeData.colorScheme.onPrimary
-                                        .withOpacity(0.7),
-                                  ),
-                                ),
-                                Text(
-                                  '/20',
-                                  style:
-                                      themeData.textTheme.subtitle1!.copyWith(
-                                    fontSize: 15,
-                                    color: themeData.colorScheme.onPrimary
-                                        .withOpacity(0.7),
-                                  ),
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ],
+                            Text(
+                              '0912xxx1122',
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: themeData.textTheme.subtitle1!.copyWith(
+                                fontSize: 15,
+                                color: themeData.colorScheme.onPrimary
+                                    .withOpacity(0.8),
+                              ),
                             ),
                             const SizedBox(
-                              width: 16,
+                              width: 20,
                             ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                IconButton(
-                                  onPressed: () {
-                                    Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            CourseQuestionsScreen(),
-                                      ),
-                                    );
-                                  },
-                                  icon: Icon(
-                                    Icons.question_mark,
-                                    color: themeData.colorScheme.primary,
-                                  ),
-                                ),
-                                Text(
-                                  'questions',
-                                  style: themeData.textTheme.caption!.copyWith(
-                                    fontSize: 10,
-                                    color: themeData.colorScheme.onPrimary
-                                        .withOpacity(0.7),
-                                  ),
-                                )
-                              ],
-                            ),
-                            const SizedBox(
-                              width: 16,
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                IconButton(
-                                  onPressed: () {
-                                    Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            AdminPanelCoursesStudents(),
-                                      ),
-                                    );
-                                  },
-                                  icon: Icon(
-                                    Icons.people_alt,
-                                    color: themeData.colorScheme.primary,
-                                  ),
-                                ),
-                                Text(
-                                  'students',
-                                  style: themeData.textTheme.caption!.copyWith(
-                                    fontSize: 10,
-                                    color: themeData.colorScheme.onPrimary
-                                        .withOpacity(0.7),
-                                  ),
-                                )
-                              ],
+                            IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.delete,
+                                size: 30,
+                                color: Colors.red.shade300,
+                              ),
                             ),
                           ],
                         ),

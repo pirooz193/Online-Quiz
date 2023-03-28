@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:online_exam_test/admin/adminHomeScreen.dart';
-import 'package:online_exam_test/admin/adminPanelAllStudents.dart';
-import 'package:online_exam_test/admin/adminPanelTeacher.dart';
-import 'package:online_exam_test/admin/adminPanelWaitingList.dart';
-import 'package:online_exam_test/admin/admin_panel_courses.dart';
+import 'package:online_exam_test/ui/home/home.dart';
+import 'package:online_exam_test/ui/student/allstudents.dart';
+import 'package:online_exam_test/ui/teacher/teachers.dart';
+import 'package:online_exam_test/ui/waitingList/waitingList.dart';
+import 'package:online_exam_test/ui/course/allCourses.dart';
 
 import 'package:online_exam_test/courseQuestions.dart';
 import 'package:online_exam_test/gen/assets.gen.dart';
