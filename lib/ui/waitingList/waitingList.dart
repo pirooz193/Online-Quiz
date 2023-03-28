@@ -23,7 +23,7 @@ class WaitingList extends StatelessWidget {
                   height: 40,
                   width: 300,
                   decoration: BoxDecoration(
-                    color: themeData.colorScheme.onPrimary.withOpacity(0.4),
+                    color: Colors.grey.shade400,
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: const TextField(

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:online_exam_test/ui/course/student/allStudents.dart';
 import 'package:online_exam_test/ui/course/addNewCourse.dart';
-import 'package:online_exam_test/courseQuestions.dart';
+import 'package:online_exam_test/ui/course/question/questions.dart';
 
 class AdminPanelCourses extends StatelessWidget {
   const AdminPanelCourses({super.key});
