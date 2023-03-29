@@ -14,15 +14,22 @@ class AuthDataSource with HttpResponseValidator implements IAuthDataSource {
 
   @override
   Future<AuthInfo> login(String username, String password) async {
-    final response = await httpClient
-        .post('/get-token', data: {"username": username, "password": password});
+    final response = await httpClient.post(
+      '/get-token',
+      data: {"username": username, "password": password},
+      options: Options(contentType: Headers.formUrlEncodedContentType),
+    );
     validateResponse(response);
-    return AuthInfo.frmJson(response.data);
+    return AuthInfo(
+        response.data['access_token'], response.data['refresh_token']);
   }
 
   @override
-  Future<AuthInfo> refreshToken(String refreshToken) {
-    // TODO: implement refreshToken
-    throw UnimplementedError();
+  Future<AuthInfo> refreshToken(String refreshToken) async {
+    final response = await httpClient
+        .post('/refresh-token', data: {"refresh-token", refreshToken});
+    validateResponse(response);
+    return AuthInfo(
+        response.data['access_token'], response.data['refresh_token']);
   }
 }

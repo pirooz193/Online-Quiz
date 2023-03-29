@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:online_exam_test/data/repo/authrepository.dart';
 import 'package:online_exam_test/ui/auth/auth.dart';
-import 'package:online_exam_test/ui/home/home.dart';
-import 'package:online_exam_test/ui/root.dart';
-import 'package:online_exam_test/ui/student/allstudents.dart';
-import 'package:online_exam_test/ui/teacher/teachers.dart';
-import 'package:online_exam_test/ui/waitingList/waitingList.dart';
-import 'package:online_exam_test/ui/course/allCourses.dart';
+
+import 'ui/root.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -17,6 +14,8 @@ void main() {
         systemNavigationBarIconBrightness: Brightness.dark),
   );
   // const SplashScreen();
+  WidgetsFlutterBinding.ensureInitialized();
+  authRepository.loadAuthInfo();
   runApp(const MyApp());
 }
 
@@ -41,18 +40,19 @@ class _MyAppState extends State<MyApp> {
           : MyAppThemeConfig.light().getThemeData(),
       home: Directionality(
         textDirection: TextDirection.ltr,
-        child: AuthScreen(),
+        child:
+            // AuthScreen(),
 
-        // RootScreen(
-        //   toggleThemeMode: () {
-        //     setState(() {
-        //       if (_themeMode == ThemeMode.dark)
-        //         _themeMode = ThemeMode.light;
-        //       else
-        //         _themeMode = ThemeMode.dark;
-        //     });
-        //   },
-        // ),
+            RootScreen(
+          toggleThemeMode: () {
+            setState(() {
+              if (_themeMode == ThemeMode.dark)
+                _themeMode = ThemeMode.light;
+              else
+                _themeMode = ThemeMode.dark;
+            });
+          },
+        ),
       ),
     );
   }

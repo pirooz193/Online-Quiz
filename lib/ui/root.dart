@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:online_exam_test/data/repo/authrepository.dart';
+import 'package:online_exam_test/ui/auth/auth.dart';
+import 'package:online_exam_test/ui/auth/bloc/auth_bloc.dart';
 import 'package:online_exam_test/ui/course/allCourses.dart';
 import 'package:online_exam_test/ui/home/home.dart';
 
-import 'student/allstudents.dart';
+import 'student/allStudents/allstudents.dart';
 import 'teacher/teachers.dart';
 import 'waitingList/waitingList.dart';
 
@@ -62,48 +65,58 @@ class _RootScreenState extends State<RootScreen> {
   @override
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
-    return WillPopScope(
-      onWillPop: _onWillPop,
-      child: Scaffold(
-        body: SafeArea(
-          child: Stack(
-            children: [
-              Positioned.fill(
-                bottom: bottomNavigationHight,
-                child: IndexedStack(
-                  index: selectedScreenIndex,
+    return ValueListenableBuilder(
+      valueListenable: AuthRepository.authChangedNotifier,
+      builder: (context, authState, child) {
+        if (authState != null && authState!.accessToken.isNotEmpty) {
+          return WillPopScope(
+            onWillPop: _onWillPop,
+            child: Scaffold(
+              body: SafeArea(
+                child: Stack(
                   children: [
-                    _navigator(_courseKey, AdminPanelCourses(), courseIndex),
-                    _navigator(_studentKey, const AdminpanelAllStudentScreen(),
-                        studentIndex),
-                    _navigator(_homeKey, const AdminHomeScreen(), homeIndex),
-                    _navigator(
-                        _teacherKey, AdminPanelTeachersScreen(), teacherIndex),
-                    _navigator(
-                        _waitingListKey, WaitingList(), waitingListIndex),
+                    Positioned.fill(
+                      bottom: bottomNavigationHight,
+                      child: IndexedStack(
+                        index: selectedScreenIndex,
+                        children: [
+                          _navigator(
+                              _courseKey, AdminPanelCourses(), courseIndex),
+                          _navigator(_studentKey, const AllStudentsScreen(),
+                              studentIndex),
+                          _navigator(
+                              _homeKey, const AdminHomeScreen(), homeIndex),
+                          _navigator(_teacherKey, AdminPanelTeachersScreen(),
+                              teacherIndex),
+                          _navigator(
+                              _waitingListKey, WaitingList(), waitingListIndex),
+                        ],
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      child: _ButtomNavigation(
+                        toggleThemeMode: toggleThemeMode,
+                        selectedIndex: selectedScreenIndex,
+                        onTap: (int index) {
+                          setState(() {
+                            history.remove(selectedScreenIndex);
+                            history.add(selectedScreenIndex);
+                            selectedScreenIndex = index;
+                          });
+                        },
+                      ),
+                    ),
                   ],
                 ),
               ),
-              Positioned(
-                bottom: 0,
-                left: 0,
-                right: 0,
-                child: _ButtomNavigation(
-                  toggleThemeMode: toggleThemeMode,
-                  selectedIndex: selectedScreenIndex,
-                  onTap: (int index) {
-                    setState(() {
-                      history.remove(selectedScreenIndex);
-                      history.add(selectedScreenIndex);
-                      selectedScreenIndex = index;
-                    });
-                  },
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+            ),
+          );
+        } else
+          return AuthScreen();
+      },
     );
   }
 

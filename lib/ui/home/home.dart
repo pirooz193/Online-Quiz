@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:online_exam_test/data/repo/authrepository.dart';
 import 'package:online_exam_test/gen/assets.gen.dart';
+import 'package:online_exam_test/ui/auth/auth.dart';
+
+bool isAuthenticated = true;
 
 class AdminHomeScreen extends StatelessWidget {
   const AdminHomeScreen({
@@ -13,12 +17,18 @@ class AdminHomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Dashboard',
-          style: themeData.textTheme.headline5!.copyWith(fontSize: 20),
+          style: themeData.textTheme.headline5!.copyWith(fontSize: 18),
         ),
         elevation: 0,
         actions: [
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              isAuthenticated = !isAuthenticated;
+              authRepository.signOut();
+              Navigator.of(context, rootNavigator: true).push(MaterialPageRoute(
+                builder: (context) => AuthScreen(),
+              ));
+            },
             child: Row(
               children: [
                 Text(
@@ -26,13 +36,8 @@ class AdminHomeScreen extends StatelessWidget {
                   style: themeData.textTheme.subtitle2!.copyWith(
                       color: themeData.colorScheme.onPrimary.withOpacity(0.7)),
                 ),
-                IconButton(
-                  onPressed: () {
-                    // Navigator.of(context).;
-                  },
-                  icon: Icon(Icons.logout,
-                      color: themeData.colorScheme.onPrimary.withOpacity(0.7)),
-                ),
+                Icon(Icons.logout,
+                    color: themeData.colorScheme.onPrimary.withOpacity(0.7))
               ],
             ),
           ),

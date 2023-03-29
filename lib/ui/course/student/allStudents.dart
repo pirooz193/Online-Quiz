@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:online_exam_test/ui/student/addStudent.dart';
+import 'package:online_exam_test/ui/student/addNewStudent/addStudent.dart';
 
 import 'package:online_exam_test/main.dart';
 
