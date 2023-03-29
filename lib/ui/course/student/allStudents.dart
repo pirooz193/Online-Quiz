@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:online_exam_test/ui/student/addNewStudent/addStudent.dart';
 
-import 'admin_panel_add_student.dart';
+import 'package:online_exam_test/main.dart';
 
-class AdminpanelAllStudentScreen extends StatelessWidget {
-  const AdminpanelAllStudentScreen({super.key});
+class AdminPanelCoursesStudents extends StatelessWidget {
+  const AdminPanelCoursesStudents({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class AdminpanelAllStudentScreen extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => const AddNewStudentScreen(),
+                  builder: (context) => AddNewStudentScreen(),
                 ),
               );
             },
@@ -58,7 +59,7 @@ class AdminpanelAllStudentScreen extends StatelessWidget {
                   height: 40,
                   width: 300,
                   decoration: BoxDecoration(
-                    color: Colors.grey.shade400,
+                    color: themeData.colorScheme.onPrimary.withOpacity(0.4),
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: const TextField(
@@ -95,7 +96,7 @@ class AdminpanelAllStudentScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(
-                            blurRadius: 10,
+                            blurRadius: 20,
                             color: themeData.colorScheme.onPrimary
                                 .withOpacity(0.2),
                           ),
@@ -134,7 +135,7 @@ class AdminpanelAllStudentScreen extends StatelessWidget {
                                           .copyWith(
                                         fontSize: 14,
                                         color: themeData.colorScheme.onPrimary
-                                            .withOpacity(0.4),
+                                            .withOpacity(0.5),
                                       ),
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
@@ -143,7 +144,7 @@ class AdminpanelAllStudentScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            const SizedBox(
+                            SizedBox(
                               width: 4,
                             ),
                             Text(

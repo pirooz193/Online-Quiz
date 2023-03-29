@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:online_exam_test/admin/adminHomeScreen.dart';
+import 'package:online_exam_test/ui/home/home.dart';
 import 'package:online_exam_test/main.dart';
 
 class CourseQuestionsScreen extends StatelessWidget {

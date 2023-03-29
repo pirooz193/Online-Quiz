@@ -1,16 +1,50 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:online_exam_test/ui/teacher/addNewTeacher.dart';
 
-class WaitingList extends StatelessWidget {
-  const WaitingList({super.key});
+class AdminPanelTeachersScreen extends StatelessWidget {
+  const AdminPanelTeachersScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Waiting List'),
+        title: const Text('Teachers'),
         elevation: 0,
+        actions: [
+          TextButton(
+            // padding: EdgeInsets.only(right: 40),
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => AdminPanelAddNewTeacherScreen(),
+                ),
+              );
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(right: 34),
+              child: Row(
+                children: [
+                  Icon(
+                    CupertinoIcons.add,
+                    size: 24,
+                    color: themeData.colorScheme.onPrimary,
+                  ),
+                  const SizedBox(
+                    width: 6,
+                  ),
+                  Text(
+                    'New Teacher',
+                    style: themeData.textTheme.bodyText2!.copyWith(
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
       body: SafeArea(
         child: Padding(
@@ -81,11 +115,12 @@ class WaitingList extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      'Student name ',
+                                      'Teacher name ',
                                       style: themeData.textTheme.headline6!
                                           .copyWith(
                                         fontSize: 14,
-                                        color: themeData.colorScheme.onPrimary,
+                                        color: themeData.colorScheme.onPrimary
+                                            .withOpacity(0.9),
                                       ),
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
@@ -94,44 +129,31 @@ class WaitingList extends StatelessWidget {
                                       height: 6,
                                     ),
                                     Text(
-                                      '0912xxx1122',
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style:
-                                          themeData.textTheme.caption!.copyWith(
-                                        fontSize: 15,
+                                      'Teacher code',
+                                      style: themeData.textTheme.headline6!
+                                          .copyWith(
+                                        fontSize: 14,
                                         color: themeData.colorScheme.onPrimary
                                             .withOpacity(0.5),
                                       ),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
                                     ),
                                   ],
                                 ),
                               ),
                             ),
                             const SizedBox(
-                              width: 8,
+                              width: 4,
                             ),
-                            Expanded(
-                              child: Text(
-                                'student code',
-                                style: themeData.textTheme.headline6!.copyWith(
-                                  fontSize: 14,
-                                  color: themeData.colorScheme.onPrimary
-                                      .withOpacity(0.6),
-                                ),
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 20,
-                            ),
-                            IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                Icons.check,
-                                size: 30,
-                                color: Colors.green,
+                            Text(
+                              '0912xxx1122',
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: themeData.textTheme.subtitle1!.copyWith(
+                                fontSize: 15,
+                                color: themeData.colorScheme.onPrimary
+                                    .withOpacity(0.8),
                               ),
                             ),
                             const SizedBox(

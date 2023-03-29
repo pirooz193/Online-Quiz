@@ -1,52 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:online_exam_test/admin/admin_panel_add_student.dart';
 
-import 'package:online_exam_test/main.dart';
-
-class AdminPanelCoursesStudents extends StatelessWidget {
-  const AdminPanelCoursesStudents({super.key});
+class WaitingList extends StatelessWidget {
+  const WaitingList({super.key});
 
   @override
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Students'),
+        title: const Text('Waiting List'),
         elevation: 0,
-        actions: [
-          TextButton(
-            // padding: EdgeInsets.only(right: 40),
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => AddNewStudentScreen(),
-                ),
-              );
-            },
-            child: Padding(
-              padding: const EdgeInsets.only(right: 34),
-              child: Row(
-                children: [
-                  Icon(
-                    CupertinoIcons.add,
-                    size: 24,
-                    color: themeData.colorScheme.onPrimary,
-                  ),
-                  const SizedBox(
-                    width: 6,
-                  ),
-                  Text(
-                    'New Student',
-                    style: themeData.textTheme.bodyText2!.copyWith(
-                      fontSize: 16,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
       ),
       body: SafeArea(
         child: Padding(
@@ -59,7 +23,7 @@ class AdminPanelCoursesStudents extends StatelessWidget {
                   height: 40,
                   width: 300,
                   decoration: BoxDecoration(
-                    color: themeData.colorScheme.onPrimary.withOpacity(0.4),
+                    color: Colors.grey.shade400,
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: const TextField(
@@ -96,7 +60,7 @@ class AdminPanelCoursesStudents extends StatelessWidget {
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(
-                            blurRadius: 20,
+                            blurRadius: 10,
                             color: themeData.colorScheme.onPrimary
                                 .withOpacity(0.2),
                           ),
@@ -130,31 +94,44 @@ class AdminPanelCoursesStudents extends StatelessWidget {
                                       height: 6,
                                     ),
                                     Text(
-                                      'student code',
-                                      style: themeData.textTheme.headline6!
-                                          .copyWith(
-                                        fontSize: 14,
+                                      '0912xxx1122',
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style:
+                                          themeData.textTheme.caption!.copyWith(
+                                        fontSize: 15,
                                         color: themeData.colorScheme.onPrimary
                                             .withOpacity(0.5),
                                       ),
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
                                     ),
                                   ],
                                 ),
                               ),
                             ),
-                            SizedBox(
-                              width: 4,
+                            const SizedBox(
+                              width: 8,
                             ),
-                            Text(
-                              '0912xxx1122',
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: themeData.textTheme.subtitle1!.copyWith(
-                                fontSize: 15,
-                                color: themeData.colorScheme.onPrimary
-                                    .withOpacity(0.8),
+                            Expanded(
+                              child: Text(
+                                'student code',
+                                style: themeData.textTheme.headline6!.copyWith(
+                                  fontSize: 14,
+                                  color: themeData.colorScheme.onPrimary
+                                      .withOpacity(0.6),
+                                ),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            IconButton(
+                              onPressed: () {},
+                              icon: const Icon(
+                                Icons.check,
+                                size: 30,
+                                color: Colors.green,
                               ),
                             ),
                             const SizedBox(
