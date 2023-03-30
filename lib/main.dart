@@ -106,7 +106,20 @@ class MyAppThemeConfig {
 
   ThemeData getThemeData() {
     return ThemeData(
+      elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+              textStyle: MaterialStateProperty.all(TextStyle(
+                color: Color.fromARGB(158, 54, 54, 54),
+              )),
+              minimumSize: MaterialStateProperty.all(
+                const Size.fromHeight(56),
+              ),
+              shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              )),
+              backgroundColor: MaterialStateProperty.all(Colors.white)))
       // scaffoldBackgroundColor: Colors.grey.shade300,
+      ,
       scaffoldBackgroundColor: scaffoldBackgroundColor,
       appBarTheme: AppBarTheme(
           toolbarHeight: 50,

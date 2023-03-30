@@ -41,9 +41,14 @@ class StudentRemoteDataSource
   }
 
   @override
-  Future<void> deleteStudentByStudentCode(String studentCode) {
-    // TODO: implement deleteStudentByStudentCode
-    throw UnimplementedError();
+  Future<void> deleteStudentByStudentCode(String studentCode) async {
+    final SharedPreferences sharedPreferences =
+        await SharedPreferences.getInstance();
+    String token = await sharedPreferences.getString("access_token")!;
+    httpClient.options.headers["Authorization"] = "Bearer $token";
+    final response =
+        await httpClient.delete("admin/delete-student/$studentCode");
+    validateResponse(response);
   }
 
   @override

@@ -9,6 +9,10 @@ abstract class AllStudentsEvent extends Equatable {
 
 class StudentsScreenStarted extends AllStudentsEvent {}
 
-class DeleteIconClicked extends AllStudentsEvent {}
+class DeleteIconClicked extends AllStudentsEvent {
+  final String studentCode;
+
+  DeleteIconClicked(this.studentCode);
+}
 
 class StudentsScreenRefresh extends AllStudentsEvent {}
