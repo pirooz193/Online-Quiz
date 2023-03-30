@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam_test/data/source/studentDataSource.dart';
+import 'package:online_exam_test/ui/student/addNewStudent/bloc/add_student_bloc.dart';
 import 'package:online_exam_test/ui/student/allStudents/bloc/all_students_bloc.dart';
 
 import '../addNewStudent/addStudent.dart';
@@ -30,12 +31,20 @@ class _AllStudentsScreenState extends State<AllStudentsScreen> {
           actions: [
             BlocBuilder<AllStudentsBloc, AllStudentsState>(
               builder: (context, state) {
-                return IconButton(
-                    onPressed: () {
-                      BlocProvider.of<AllStudentsBloc>(context)
-                          .add(StudentsScreenRefresh());
-                    },
-                    icon: Icon(Icons.refresh));
+                return Row(
+                  children: [
+                    Text(
+                      'Refresh',
+                      style: themeData.textTheme.caption,
+                    ),
+                    IconButton(
+                        onPressed: () {
+                          BlocProvider.of<AllStudentsBloc>(context)
+                              .add(StudentsScreenRefresh());
+                        },
+                        icon: Icon(Icons.refresh)),
+                  ],
+                );
               },
             ),
             const SizedBox(
@@ -200,7 +209,12 @@ class _AllStudentsScreenState extends State<AllStudentsScreen> {
                                       width: 20,
                                     ),
                                     IconButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        BlocProvider.of<AllStudentsBloc>(
+                                                context)
+                                            .add(DeleteIconClicked(state
+                                                .students[index].studentCode));
+                                      },
                                       icon: Icon(
                                         Icons.delete,
                                         size: 30,
@@ -222,12 +236,20 @@ class _AllStudentsScreenState extends State<AllStudentsScreen> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(state.exception.message),
-                          ElevatedButton(
-                              onPressed: () {
-                                BlocProvider.of<AllStudentsBloc>(context)
-                                    .add(StudentsScreenRefresh());
-                              },
-                              child: Text('Try again!'))
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Center(
+                            child: Container(
+                              width: 200,
+                              child: ElevatedButton(
+                                  onPressed: () {
+                                    BlocProvider.of<AllStudentsBloc>(context)
+                                        .add(StudentsScreenRefresh());
+                                  },
+                                  child: Text('Try again!')),
+                            ),
+                          )
                         ],
                       );
                     } else
