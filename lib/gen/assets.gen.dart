@@ -26,12 +26,19 @@ class $AssetsIconsGen {
   /// File path: assets/icons/gold-cup.png
   AssetGenImage get goldCup => const AssetGenImage('assets/icons/gold-cup.png');
 
+  /// File path: assets/icons/home-active-2.png
+  AssetGenImage get homeActive2 =>
+      const AssetGenImage('assets/icons/home-active-2.png');
+
   /// File path: assets/icons/home-active.png
   AssetGenImage get homeActive =>
       const AssetGenImage('assets/icons/home-active.png');
 
   /// File path: assets/icons/home.png
-  AssetGenImage get home => const AssetGenImage('assets/icons/home.png');
+  AssetGenImage get homePng => const AssetGenImage('assets/icons/home.png');
+
+  /// File path: assets/icons/home.svg
+  String get homeSvg => 'assets/icons/home.svg';
 
   /// File path: assets/icons/message.png
   AssetGenImage get message => const AssetGenImage('assets/icons/message.png');
@@ -70,13 +77,15 @@ class $AssetsIconsGen {
   AssetGenImage get waiting => const AssetGenImage('assets/icons/waiting.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [
+  List<dynamic> get values => [
         courseActive,
         course,
         examIcon,
         goldCup,
+        homeActive2,
         homeActive,
-        home,
+        homePng,
+        homeSvg,
         message,
         questions,
         studentActive,
@@ -97,8 +106,11 @@ class $AssetsImgGen {
   AssetGenImage get adminPanelCourses =>
       const AssetGenImage('assets/img/admin-panel-courses.png');
 
+  /// File path: assets/img/logo.png
+  AssetGenImage get logo => const AssetGenImage('assets/img/logo.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [adminPanelCourses];
+  List<AssetGenImage> get values => [adminPanelCourses, logo];
 }
 
 class Assets {

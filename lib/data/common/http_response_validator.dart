@@ -12,7 +12,7 @@ mixin HttpResponseValidator {
           throw NotFoundException();
         }
       } else {
-        throw AppException();
+        // throw AppException();
       }
     } else {}
   }
