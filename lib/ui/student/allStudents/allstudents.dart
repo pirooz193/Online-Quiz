@@ -159,7 +159,10 @@ class _AllStudentsScreenState extends State<AllStudentsScreen> {
                                               MainAxisAlignment.center,
                                           children: [
                                             Text(
-                                              state.students[index].username,
+                                              state.students[index].name +
+                                                  ' ' +
+                                                  state
+                                                      .students[index].lastName,
                                               style: themeData
                                                   .textTheme.headline6!
                                                   .copyWith(
@@ -247,7 +250,11 @@ class _AllStudentsScreenState extends State<AllStudentsScreen> {
                                     BlocProvider.of<AllStudentsBloc>(context)
                                         .add(StudentsScreenRefresh());
                                   },
-                                  child: Text('Try again!')),
+                                  child: Text(
+                                    'Try again!',
+                                    style:
+                                        TextStyle(color: Colors.grey.shade600),
+                                  )),
                             ),
                           )
                         ],

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:online_exam_test/data/repo/authrepository.dart';
 import 'package:online_exam_test/ui/auth/auth.dart';
 import 'package:online_exam_test/ui/auth/bloc/auth_bloc.dart';
-import 'package:online_exam_test/ui/course/allCourses.dart';
+import 'package:online_exam_test/ui/course/allCourses/allCourses.dart';
 import 'package:online_exam_test/ui/home/home.dart';
 
 import 'student/allStudents/allstudents.dart';
