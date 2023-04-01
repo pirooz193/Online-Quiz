@@ -1,5 +1,9 @@
+import 'package:online_exam_test/common/http_client.dart';
 import 'package:online_exam_test/data/source/teacherDataSource.dart';
 import 'package:online_exam_test/data/teacher.dart';
+
+final teacherRepository =
+    TeacherRepository(TeacherRemoteDataSource(httpClient: httpClient));
 
 abstract class ITeacherRepository {
   Future<List<TeacherEntity>> getAll();
@@ -9,7 +13,7 @@ abstract class ITeacherRepository {
 }
 
 class TeacherRepository implements ITeacherRepository {
-  final ITeacherDataSource dataSource;
+  final TeacherRemoteDataSource dataSource;
 
   TeacherRepository(this.dataSource);
 

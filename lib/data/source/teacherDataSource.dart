@@ -14,14 +14,11 @@ class TeacherRemoteDataSource
     implements ITeacherDataSource {
   final Dio httpClient;
 
-  TeacherRemoteDataSource(this.httpClient);
+  TeacherRemoteDataSource({required this.httpClient});
 
   @override
   Future<void> addNewTeacher(String name, String lastName, String teacherCode,
-      String phoneNumber) async {
-    final response = await httpClient.get('/admin/all-teachers');
-    validateResponse(response);
-  }
+      String phoneNumber) async {}
 
   @override
   Future<void> deleteTeacherByCode(String teacherCode) {
@@ -30,8 +27,13 @@ class TeacherRemoteDataSource
   }
 
   @override
-  Future<List<TeacherEntity>> getAll() {
-    // TODO: implement getAll
-    throw UnimplementedError();
+  Future<List<TeacherEntity>> getAll() async {
+    final response = await httpClient.get('/admin/all-teachers');
+    validateResponse(response);
+    List<TeacherEntity> teachers = [];
+    (response.data as List).forEach((teacher) {
+      teachers.add(TeacherEntity.fromJson(teacher));
+    });
+    return teachers;
   }
 }

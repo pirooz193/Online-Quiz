@@ -6,3 +6,13 @@ abstract class TeachersEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class TeachersScreenStarted extends TeachersEvent {}
+
+class DeleteIconClicked extends TeachersEvent {
+  final String teacherCode;
+
+  DeleteIconClicked(this.teacherCode);
+}
+
+class TeachersScreenRefresh extends TeachersEvent {}

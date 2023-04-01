@@ -5,13 +5,24 @@ import 'package:online_exam_test/data/repo/authrepository.dart';
 import 'ui/root.dart';
 
 void main() {
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-        statusBarColor: Colors.white,
-        statusBarIconBrightness: Brightness.dark,
-        systemNavigationBarColor: Colors.white,
-        systemNavigationBarIconBrightness: Brightness.dark),
-  );
+  if (themeMode == ThemeMode.dark) {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+          statusBarColor: Color.fromARGB(255, 30, 30, 30),
+          statusBarIconBrightness: Brightness.light,
+          systemNavigationBarColor: Color.fromARGB(255, 30, 30, 30),
+          systemNavigationBarIconBrightness: Brightness.light),
+    );
+  } else {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+          statusBarColor: Colors.white,
+          statusBarIconBrightness: Brightness.dark,
+          systemNavigationBarColor: Colors.white,
+          systemNavigationBarIconBrightness: Brightness.dark),
+    );
+  }
+
   // const SplashScreen();
   WidgetsFlutterBinding.ensureInitialized();
   authRepository.loadAuthInfo();
@@ -25,16 +36,17 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
+ThemeMode themeMode = ThemeMode.light;
+
 class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
-  ThemeMode _themeMode = ThemeMode.light;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Online Quiz',
-      theme: _themeMode == ThemeMode.dark
+      theme: themeMode == ThemeMode.dark
           ? MyAppThemeConfig.dark().getThemeData()
           : MyAppThemeConfig.light().getThemeData(),
       home: Directionality(
@@ -45,10 +57,10 @@ class _MyAppState extends State<MyApp> {
             RootScreen(
           toggleThemeMode: () {
             setState(() {
-              if (_themeMode == ThemeMode.dark) {
-                _themeMode = ThemeMode.light;
+              if (themeMode == ThemeMode.dark) {
+                themeMode = ThemeMode.light;
               } else {
-                _themeMode = ThemeMode.dark;
+                themeMode = ThemeMode.dark;
               }
             });
           },
@@ -104,6 +116,7 @@ class MyAppThemeConfig {
         appBarColor = const Color.fromARGB(255, 235, 235, 235),
         brightness = Brightness.light;
 
+  TextStyle defaultTextStyle = const TextStyle(fontFamily: 'IranYekan');
   ThemeData getThemeData() {
     return ThemeData(
       elevatedButtonTheme: ElevatedButtonThemeData(
@@ -127,29 +140,28 @@ class MyAppThemeConfig {
           foregroundColor: foregroundColor,
           elevation: 0),
       textTheme: TextTheme(
-        bodyText2: TextStyle(
-          // fontWeight: FontWeight.bold,
+        bodyText2: defaultTextStyle.copyWith(
           fontSize: 20,
           color: onPrimary,
         ),
-        headline4: TextStyle(
+        headline4: defaultTextStyle.copyWith(
           fontWeight: FontWeight.bold,
           fontSize: 30,
           color: onPrimary,
         ),
-        headline5: TextStyle(
+        headline5: defaultTextStyle.copyWith(
           fontWeight: FontWeight.bold,
           fontSize: 25,
           color: onPrimary,
         ),
-        headline6: TextStyle(
+        headline6: defaultTextStyle.copyWith(
           fontWeight: FontWeight.bold,
           fontSize: 18,
           color: onPrimary,
         ),
-        subtitle1: TextStyle(fontSize: 12, color: onPrimary),
-        subtitle2: TextStyle(fontSize: 15, color: onPrimary),
-        caption: const TextStyle(color: Colors.grey, fontSize: 10),
+        subtitle1: defaultTextStyle.copyWith(fontSize: 12, color: onPrimary),
+        subtitle2: defaultTextStyle.copyWith(fontSize: 15, color: onPrimary),
+        caption: defaultTextStyle.copyWith(color: Colors.grey, fontSize: 10),
       ),
       colorScheme: ColorScheme.light(
           primary: primaryColor,
