@@ -6,7 +6,7 @@ import 'package:online_exam_test/ui/course/allCourses/allCourses.dart';
 import 'package:online_exam_test/ui/home/home.dart';
 
 import 'student/allStudents/allstudents.dart';
-import 'teacher/teachers.dart';
+import 'teacher/all_teachers/teachers.dart';
 import 'waitingList/waitingList.dart';
 
 class RootScreen extends StatefulWidget {

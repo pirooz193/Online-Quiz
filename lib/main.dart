@@ -1,18 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:online_exam_test/data/repo/authrepository.dart';
-import 'package:online_exam_test/ui/auth/auth.dart';
 
 import 'ui/root.dart';
 
 void main() {
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-        statusBarColor: Colors.white,
-        statusBarIconBrightness: Brightness.dark,
-        systemNavigationBarColor: Colors.white,
-        systemNavigationBarIconBrightness: Brightness.dark),
-  );
+  if (themeMode == ThemeMode.dark) {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+          statusBarColor: Color.fromARGB(255, 30, 30, 30),
+          statusBarIconBrightness: Brightness.light,
+          systemNavigationBarColor: Color.fromARGB(255, 30, 30, 30),
+          systemNavigationBarIconBrightness: Brightness.light),
+    );
+  } else {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+          statusBarColor: Colors.white,
+          statusBarIconBrightness: Brightness.dark,
+          systemNavigationBarColor: Colors.white,
+          systemNavigationBarIconBrightness: Brightness.dark),
+    );
+  }
+
   // const SplashScreen();
   WidgetsFlutterBinding.ensureInitialized();
   authRepository.loadAuthInfo();
@@ -26,16 +36,17 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
+ThemeMode themeMode = ThemeMode.light;
+
 class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
-  ThemeMode _themeMode = ThemeMode.light;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Online Quiz',
-      theme: _themeMode == ThemeMode.dark
+      theme: themeMode == ThemeMode.dark
           ? MyAppThemeConfig.dark().getThemeData()
           : MyAppThemeConfig.light().getThemeData(),
       home: Directionality(
@@ -46,10 +57,11 @@ class _MyAppState extends State<MyApp> {
             RootScreen(
           toggleThemeMode: () {
             setState(() {
-              if (_themeMode == ThemeMode.dark)
-                _themeMode = ThemeMode.light;
-              else
-                _themeMode = ThemeMode.dark;
+              if (themeMode == ThemeMode.dark) {
+                themeMode = ThemeMode.light;
+              } else {
+                themeMode = ThemeMode.dark;
+              }
             });
           },
         ),
@@ -59,7 +71,7 @@ class _MyAppState extends State<MyApp> {
 }
 
 class MyAppThemeConfig {
-  final Color primaryColor = Color.fromARGB(255, 105, 129, 236);
+  final Color primaryColor = const Color.fromARGB(255, 105, 129, 236);
 
   final Color primaryTextColor;
   final Color secondaryTextColor;
@@ -85,30 +97,31 @@ class MyAppThemeConfig {
       : primaryTextColor = Colors.white,
         secondaryTextColor = Colors.white70,
         surfaceColor = Colors.black.withOpacity(0.6),
-        backgroundColor = Color.fromARGB(255, 30, 30, 30),
+        backgroundColor = const Color.fromARGB(255, 30, 30, 30),
         onPrimary = Colors.white,
         foregroundColor = Colors.white,
         // scaffoldBackgroundColor = Color(0x0dffffff),
-        scaffoldBackgroundColor = Color.fromARGB(158, 54, 54, 54),
+        scaffoldBackgroundColor = const Color.fromARGB(158, 54, 54, 54),
         appBarColor = Colors.black,
         brightness = Brightness.dark;
 
   MyAppThemeConfig.light()
       : primaryTextColor = Colors.grey.shade900,
         onPrimary = Colors.black,
-        secondaryTextColor = Color.fromARGB(255, 22, 32, 26),
+        secondaryTextColor = const Color.fromARGB(255, 22, 32, 26),
         surfaceColor = Colors.white,
         backgroundColor = Colors.white,
         foregroundColor = Colors.grey.shade700,
-        scaffoldBackgroundColor = Color.fromARGB(255, 209, 229, 255),
-        appBarColor = Color.fromARGB(255, 235, 235, 235),
+        scaffoldBackgroundColor = const Color.fromARGB(255, 209, 229, 255),
+        appBarColor = const Color.fromARGB(255, 235, 235, 235),
         brightness = Brightness.light;
 
+  TextStyle defaultTextStyle = const TextStyle(fontFamily: 'IranYekan');
   ThemeData getThemeData() {
     return ThemeData(
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
-              textStyle: MaterialStateProperty.all(TextStyle(
+              textStyle: MaterialStateProperty.all(const TextStyle(
                 color: Color.fromARGB(158, 54, 54, 54),
               )),
               minimumSize: MaterialStateProperty.all(
@@ -127,29 +140,28 @@ class MyAppThemeConfig {
           foregroundColor: foregroundColor,
           elevation: 0),
       textTheme: TextTheme(
-        bodyText2: TextStyle(
-          // fontWeight: FontWeight.bold,
+        bodyText2: defaultTextStyle.copyWith(
           fontSize: 20,
           color: onPrimary,
         ),
-        headline4: TextStyle(
+        headline4: defaultTextStyle.copyWith(
           fontWeight: FontWeight.bold,
           fontSize: 30,
           color: onPrimary,
         ),
-        headline5: TextStyle(
+        headline5: defaultTextStyle.copyWith(
           fontWeight: FontWeight.bold,
           fontSize: 25,
           color: onPrimary,
         ),
-        headline6: TextStyle(
+        headline6: defaultTextStyle.copyWith(
           fontWeight: FontWeight.bold,
           fontSize: 18,
           color: onPrimary,
         ),
-        subtitle1: TextStyle(fontSize: 12, color: onPrimary),
-        subtitle2: TextStyle(fontSize: 15, color: onPrimary),
-        caption: TextStyle(color: Colors.grey, fontSize: 10),
+        subtitle1: defaultTextStyle.copyWith(fontSize: 12, color: onPrimary),
+        subtitle2: defaultTextStyle.copyWith(fontSize: 15, color: onPrimary),
+        caption: defaultTextStyle.copyWith(color: Colors.grey, fontSize: 10),
       ),
       colorScheme: ColorScheme.light(
           primary: primaryColor,

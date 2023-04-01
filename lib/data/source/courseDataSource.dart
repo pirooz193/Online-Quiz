@@ -40,9 +40,6 @@ class AllCoursesRemoteDataSource
 
   @override
   Future<List<CourseEntity>> getAll() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    final token = sharedPreferences.getString('access_token');
-    httpClient.options.headers["Authorization"] = "Bearer $token";
     final response = await httpClient.get('admin/all-courses');
     final List<CourseEntity> courses = [];
     (response.data as List).forEach((course) {
