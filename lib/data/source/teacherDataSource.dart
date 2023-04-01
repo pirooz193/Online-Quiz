@@ -18,12 +18,21 @@ class TeacherRemoteDataSource
 
   @override
   Future<void> addNewTeacher(String name, String lastName, String teacherCode,
-      String phoneNumber) async {}
+      String phoneNumber) async {
+    final response = await httpClient.post('admin/create-master', data: {
+      "name": name,
+      "lastName": lastName,
+      "master_code": teacherCode,
+      "phone_number": phoneNumber
+    });
+    validateResponse(response);
+  }
 
   @override
-  Future<void> deleteTeacherByCode(String teacherCode) {
-    // TODO: implement deleteTeacherByCode
-    throw UnimplementedError();
+  Future<void> deleteTeacherByCode(String teacherCode) async {
+    final response =
+        await httpClient.delete('/admin/delete-master/$teacherCode');
+    validateResponse(response);
   }
 
   @override

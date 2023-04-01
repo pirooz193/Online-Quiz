@@ -174,7 +174,7 @@ class AdminPanelCourses extends StatelessWidget {
                                                 Text(
                                                   course.teacher != null
                                                       ? '${course.teacher!.name} ${course.teacher!.lastName}'
-                                                      : '-',
+                                                      : 'بدون استاد',
                                                   style: themeData
                                                       .textTheme.headline6!
                                                       .copyWith(

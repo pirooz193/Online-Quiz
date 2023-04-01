@@ -1,33 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_exam_test/data/source/studentDataSource.dart';
-import 'package:online_exam_test/ui/student/addNewStudent/bloc/add_student_bloc.dart';
-import 'package:online_exam_test/ui/student/allStudents/allstudents.dart';
-import 'package:online_exam_test/ui/student/allStudents/bloc/all_students_bloc.dart';
+import 'package:online_exam_test/data/repo/teacherRepository.dart';
+import 'package:online_exam_test/ui/teacher/add_new_teacher/bloc/add_new_teacher_bloc.dart';
+import 'package:online_exam_test/ui/teacher/all_teachers/bloc/teachers_bloc.dart';
 
-class AddNewStudentScreen extends StatelessWidget {
-  const AddNewStudentScreen({super.key});
+class AdminPanelAddNewTeacherScreen extends StatelessWidget {
+  const AdminPanelAddNewTeacherScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController studentNameController = TextEditingController();
-    final TextEditingController studentLastNameController =
-        TextEditingController();
-    final TextEditingController studentCodeController = TextEditingController();
+    final TextEditingController nameController = TextEditingController();
+    final TextEditingController lastNameController = TextEditingController();
+    final TextEditingController teacherCodeController = TextEditingController();
     final TextEditingController phoneNumberController = TextEditingController();
     final themeData = Theme.of(context);
-    return BlocProvider<AddStudentBloc>(
+    return BlocProvider<AddNewTeacherBloc>(
       create: (context) {
-        final studentBloc = AddStudentBloc();
-        studentBloc.add(AddStudentStarted());
-        return studentBloc;
+        final teacherBloc = AddNewTeacherBloc();
+        teacherBloc.add(AddTeacherStarted());
+        return teacherBloc;
       },
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Add New Student'),
+          title: const Text('Add New Teacher'),
           elevation: 0,
         ),
-        body: BlocBuilder<AddStudentBloc, AddStudentState>(
+        body: BlocBuilder<AddNewTeacherBloc, AddNewTeacherState>(
           builder: (context, state) {
             return SafeArea(
               child: SingleChildScrollView(
@@ -53,7 +51,7 @@ class AddNewStudentScreen extends StatelessWidget {
                         child: Column(children: [
                           Center(
                             child: Text(
-                              'New Student',
+                              'New Teacher',
                               style: themeData.textTheme.headline6,
                             ),
                           ),
@@ -65,7 +63,7 @@ class AddNewStudentScreen extends StatelessWidget {
                             height: 32,
                           ),
                           TextField(
-                            controller: studentNameController,
+                            controller: nameController,
                             decoration: InputDecoration(
                               label: Text(
                                 'name',
@@ -79,7 +77,7 @@ class AddNewStudentScreen extends StatelessWidget {
                             height: 32,
                           ),
                           TextField(
-                            controller: studentLastNameController,
+                            controller: lastNameController,
                             decoration: InputDecoration(
                               label: Text(
                                 'last name',
@@ -93,11 +91,11 @@ class AddNewStudentScreen extends StatelessWidget {
                             height: 32,
                           ),
                           TextField(
-                            controller: studentCodeController,
+                            controller: teacherCodeController,
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
                               label: Text(
-                                'Student Code',
+                                'Teacher Code',
                                 style: themeData.textTheme.subtitle1!.copyWith(
                                     color: themeData.colorScheme.onPrimary
                                         .withOpacity(0.8)),
@@ -125,10 +123,10 @@ class AddNewStudentScreen extends StatelessWidget {
                           Center(
                             child: TextButton(
                               onPressed: () {
-                                studentRepository.createNewStudent(
-                                    studentNameController.text,
-                                    studentLastNameController.text,
-                                    studentCodeController.text,
+                                teacherRepository.addNewTeacher(
+                                    nameController.text,
+                                    lastNameController.text,
+                                    teacherCodeController.text,
                                     phoneNumberController.text);
                                 // BlocProvider.of<AllStudentsBloc>(context)
                                 //     .add(StudentsScreenRefresh());
@@ -142,7 +140,7 @@ class AddNewStudentScreen extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(8)),
                                 child: Center(
                                   child: Text(
-                                    'Add Student',
+                                    'Add Teacher',
                                     style: themeData.textTheme.bodyText1!
                                         .copyWith(color: Colors.white),
                                   ),

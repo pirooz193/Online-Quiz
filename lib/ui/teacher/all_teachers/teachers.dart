@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam_test/data/teacher.dart';
-import 'package:online_exam_test/ui/teacher/addNewTeacher.dart';
+import 'package:online_exam_test/ui/teacher/add_new_teacher/addNewTeacher.dart';
 import 'package:online_exam_test/ui/teacher/all_teachers/bloc/teachers_bloc.dart';
 
 class AdminPanelTeachersScreen extends StatelessWidget {
@@ -207,7 +207,12 @@ class AdminPanelTeachersScreen extends StatelessWidget {
                                           width: 20,
                                         ),
                                         IconButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            BlocProvider.of<TeachersBloc>(
+                                                    context)
+                                                .add(DeleteIconClicked(
+                                                    teacher.teacherCode));
+                                          },
                                           icon: Icon(
                                             Icons.delete,
                                             size: 30,
